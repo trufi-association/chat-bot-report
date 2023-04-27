@@ -46,10 +46,6 @@ Una vez importados los flujos, es posible que necesites personalizarlos según t
 - Verifica que las palabras clave, etiquetas y otras configuraciones específicas del flujo sean las adecuadas para tu caso de uso.
 - No olvides probar tus flujos antes de usarlos en un entorno de producción.
 
-## Soporte
-
-Si tienes alguna pregunta o necesitas ayuda, no dudes en abrir un [issue](https://github.com/tu_usuario/tu_repositorio/issues) en este repositorio.
-
 # Crear una copia de la base de datos Airtable
 
 Este proyecto utiliza una base de datos Airtable como parte de su infraestructura. Para replicar la base de datos en tu propia cuenta de Airtable, sigue los pasos a continuación:
@@ -86,11 +82,6 @@ Una vez que hayas creado la copia de la base de datos, puedes personalizarla seg
 ## Paso 5: Conectar la base de datos a tu proyecto
 
 Después de replicar y personalizar la base de datos, necesitarás conectarla a tu proyecto. Consulta la documentación de Airtable API y la biblioteca que estés utilizando en tu proyecto (por ejemplo, airtable.js, Airtable.py, etc.) para obtener instrucciones sobre cómo hacerlo.
-
-## Soporte
-
-Si tienes alguna pregunta o necesitas ayuda, no dudes en abrir un [issue](https://github.com/tu_usuario/tu_repositorio/issues) en este repositorio.
-
 
 # Configurar la API key de Airtable en TextIt/RapidPro
 
@@ -136,6 +127,39 @@ Para utilizar el canal de WhatsApp a través de 360dialog, es necesario crear un
 
 **Nota:** El proceso de revisión y verificación de la información de tu empresa por parte de Facebook puede llevar tiempo. Por lo tanto, es importante comenzar este proceso con suficiente anticipación para evitar retrasos en la implementación de tu proyecto.
 
+# Árbol de Categorías
+
+Este documento explica la estructura y funcionamiento del árbol de categorías utilizado por nuestro chatbot. El árbol de categorías está diseñado para ser altamente versátil y adaptable a diferentes ciudades y regiones.
+
+## Estructura del Árbol de Categorías
+
+El árbol de categorías se encuentra en una tabla de Airtable. Los campos clave de la tabla son:
+
+- **ID**: El identificador único de cada categoría.
+- **ID_categoria_padre**: Enlace a la misma tabla, indica el ID de la categoría padre para establecer la relación jerárquica.
+- **Categoria**: Nombre de la categoría.
+- **Coloquial**: Nombre alternativo de la categoría en el idioma local de la región donde se utiliza.
+- **Pregunta**: Texto de la pregunta relacionada con cada categoría.
+
+### Navegación y Jerarquía
+
+Las categorías base no tienen un ID de padres y se deja por defecto el valor cero. La jerarquía y navegación se establecen mediante la relación entre los campos **ID** y **ID_categoria_padre**. El chatbot utiliza esta información para crear e interactuar automáticamente con las categorías.
+
+### Importancia de la Configuración Correcta
+
+Es crucial asegurarse de que las categorías, nombres y relaciones padre-hijo estén bien configurados, ya que la interacción y navegación del chatbot dependen completamente de esto.
+
+### Uso de la Información Coloquial
+
+El campo **Coloquial** contiene información sobre cómo se escribe la categoría en el idioma local de la región. Si no se proporciona un nombre coloquial, el chatbot utilizará el valor del campo **Categoria** tal cual.
+
+### Preguntas Personalizadas por Categoría
+
+El campo **Pregunta** contiene el texto de la pregunta relacionada con cada categoría. Esto permite personalizar la pregunta en función de la categoría, ya sea una propuesta, un reclamo, una sugerencia o una felicitación.
+
+## Versatilidad del Chatbot
+
+El chatbot es muy versátil en términos de adaptabilidad a diferentes ciudades o regiones. Las categorías pueden ser creadas y modificadas fácilmente en la tabla de Airtable para adaptarse a las necesidades específicas de cada caso de uso.
 
 
 ## Soporte
