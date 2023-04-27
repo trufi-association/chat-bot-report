@@ -1,6 +1,6 @@
 # Tutorial de Reportes a través de Chatbot 
 
-# Sobre RapidPro y Texit
+# Sobre RapidPro y Textit
 
 RapidPro es un proyecto creado por UNICEF y es completamente de código abierto. Para efectos prácticos, utilizamos un hosting de este proyecto llamado TextIt, pero puedes crear toda la plataforma de trabajo enteramente desde cero utilizando el código abierto. Todos los detalles y el código fuente del proyecto RapidPro se pueden encontrar en su repositorio de GitHub: [https://github.com/rapidpro/rapidpro](https://github.com/rapidpro/rapidpro)
 
