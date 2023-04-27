@@ -161,6 +161,43 @@ El campo **Pregunta** contiene el texto de la pregunta relacionada con cada cate
 
 El chatbot es muy versátil en términos de adaptabilidad a diferentes ciudades o regiones. Las categorías pueden ser creadas y modificadas fácilmente en la tabla de Airtable para adaptarse a las necesidades específicas de cada caso de uso.
 
+# Dashboard
+
+Nuestro proyecto incluye un dashboard para visualizar y analizar los datos recolectados a través de nuestra plataforma. En esta sección, explicaremos cómo hacer la conexión con el dashboard y cómo ponerlo en funcionamiento.
+
+## ¿Por qué elegimos Looker?
+
+Decidimos utilizar [Looker](https://lookerstudio.google.com/) debido a sus múltiples ventajas, como la facilidad de uso, la capacidad para conectarse a diversas fuentes de datos, y sus potentes herramientas de visualización y análisis. Además, Looker es una solución de Business Intelligence (BI) de Google Cloud, lo que garantiza un rendimiento y una escalabilidad excepcionales.
+
+![Dashboard](URL_DE_LA_IMAGEN_DEL_DASHBOARD)
+
+## Dashboard de prueba
+
+Hemos creado un dashboard de prueba con datos recolectados en la ciudad de Bogotá. Puedes acceder a este dashboard público en el siguiente enlace:
+
+[Dashboard de prueba](https://lookerstudio.google.com/reporting/086200f1-14f1-402c-8855-5cc4e1d79bf5)
+
+**Nota de seguridad:** Para proteger la privacidad de los usuarios y la información, este dashboard no comparte ninguna información personal de las personas que han reportado eventos. En lugar de ello, se muestra una agregación de datos para identificar áreas donde se han presentado eventos relevantes.
+
+## Crear tu propio dashboard
+
+Para ayudarte a crear tu propio dashboard, hemos preparado una plantilla que puedes encontrar en el siguiente enlace:
+
+[Plantilla de dashboard](https://lookerstudio.google.com/u/0/reporting/d6762030-83d4-4a14-bebc-f39aa860813f/edit)
+
+Para crear una copia de la plantilla, haz clic en los tres puntos en la esquina superior derecha y selecciona "Crear una copia". A continuación, podrás trabajar con la fuente de datos para personalizar tu propio dashboard.
+
+## Conectar el dashboard a tu fuente de datos en Airtable
+
+Para conectar el dashboard a tu fuente de datos en Airtable, sigue los mismos pasos que utilizaste para conectar TextIt con Airtable. Utiliza la API key que creaste previamente para establecer la conexión entre las dos plataformas.
+
+Existen varios proveedores de conectividad que pueden ayudarte a conectar Looker con Airtable. Puedes elegir el que mejor se adapte a tus necesidades y al plan que desees utilizar.
+
+Para obtener más información sobre cómo personalizar y visualizar tus datos en el dashboard, consulta la documentación oficial de Looker en el siguiente enlace:
+
+[Documentación de Looker](https://cloud.google.com/looker/docs?hl=es-419)
+
+
 
 ## Soporte
 
