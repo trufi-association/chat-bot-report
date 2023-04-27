@@ -169,7 +169,8 @@ Nuestro proyecto incluye un dashboard para visualizar y analizar los datos recol
 
 Decidimos utilizar [Looker](https://lookerstudio.google.com/) debido a sus múltiples ventajas, como la facilidad de uso, la capacidad para conectarse a diversas fuentes de datos, y sus potentes herramientas de visualización y análisis. Además, Looker es una solución de Business Intelligence (BI) de Google Cloud, lo que garantiza un rendimiento y una escalabilidad excepcionales.
 
-![Dashboard](URL_DE_LA_IMAGEN_DEL_DASHBOARD)
+![Dashboard](https://user-images.githubusercontent.com/817147/234982518-4fdd2f6f-6cae-4647-a0f2-f1dd1eb98ff8.png)
+
 
 ## Dashboard de prueba
 
