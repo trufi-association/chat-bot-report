@@ -140,4 +140,4 @@ Para utilizar el canal de WhatsApp a través de 360dialog, es necesario crear un
 
 ## Soporte
 
-Si tienes alguna pregunta o necesitas ayuda, no dudes en abrir un [issue](https://github.com/tu_usuario/tu_repositorio/issues) en este repositorio.
+Si tienes alguna pregunta o necesitas ayuda, no dudes en abrir un [issue](https://github.com/trufi-association/chat-bot-report/issues) en este repositorio.
