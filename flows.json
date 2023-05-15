@@ -389,6 +389,1017 @@
           "exits": [
             {
               "uuid": "601eed58-04a3-473e-b61d-d9209a8af736",
+              "destination_uuid": "07de8f0e-5a82-4cfa-99f8-289b80ee47bc"
+            }
+          ]
+        },
+        {
+          "uuid": "07de8f0e-5a82-4cfa-99f8-289b80ee47bc",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "tiemponoimporta",
+              "value": "@child.results.tiemponoimporta",
+              "category": "",
+              "uuid": "cfa85455-c70e-486e-b1fa-1e80ae37ae2c"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "30a84076-51af-4a4f-8fef-f550e92fb2eb",
+              "destination_uuid": "65da43f4-6451-4be0-99f6-98b67a0d07a4"
+            }
+          ]
+        },
+        {
+          "uuid": "65da43f4-6451-4be0-99f6-98b67a0d07a4",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "8883dad6-8145-4417-8a7e-49fc47aa1b7b",
+            "categories": [
+              {
+                "uuid": "92af842a-02b6-46f9-9dc1-1eab0192b99d",
+                "name": "Pregunta Victima",
+                "exit_uuid": "b07925c8-beac-4617-8c35-968955b72cb0"
+              },
+              {
+                "uuid": "bd95fb79-b24c-47c7-8c7c-bdbbbb78cb5a",
+                "name": "Sin victima",
+                "exit_uuid": "6fe8a4e9-8cb6-4fea-a7b3-2c619c1162d4"
+              },
+              {
+                "uuid": "8883dad6-8145-4417-8a7e-49fc47aa1b7b",
+                "name": "Other",
+                "exit_uuid": "934ac7b0-415e-4222-a04a-db3d2c3d7e70"
+              }
+            ],
+            "cases": [
+              {
+                "arguments": [
+                  "False"
+                ],
+                "type": "has_any_word",
+                "uuid": "825dd3fa-7e58-44de-a819-83372907ca2f",
+                "category_uuid": "92af842a-02b6-46f9-9dc1-1eab0192b99d"
+              },
+              {
+                "arguments": [
+                  "True"
+                ],
+                "type": "has_any_word",
+                "uuid": "4d1f1917-d6d0-417a-aacb-6041771f42b2",
+                "category_uuid": "bd95fb79-b24c-47c7-8c7c-bdbbbb78cb5a"
+              }
+            ],
+            "operand": "@(is_error(child.results.pregunta_victima))"
+          },
+          "exits": [
+            {
+              "uuid": "b07925c8-beac-4617-8c35-968955b72cb0",
+              "destination_uuid": "1b9834ae-718c-4e9c-be9e-a1970ceb546d"
+            },
+            {
+              "uuid": "6fe8a4e9-8cb6-4fea-a7b3-2c619c1162d4",
+              "destination_uuid": "35056868-d32b-4898-a4ac-7659b809aa7d"
+            },
+            {
+              "uuid": "934ac7b0-415e-4222-a04a-db3d2c3d7e70",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "1b9834ae-718c-4e9c-be9e-a1970ceb546d",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "@child.results.pregunta_victima\n\nPor favor selecciona de esta lista de actores viales: \n\n@child.results.listado_actores  ",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "6b26f06e-f785-44ee-a2ec-b972119da697"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "a4d108c8-c224-4584-99c2-4932b25fd66f",
+              "destination_uuid": "0848f2cf-8640-464f-b2d9-e96021fdb1d8"
+            }
+          ]
+        },
+        {
+          "uuid": "0848f2cf-8640-464f-b2d9-e96021fdb1d8",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "be5b48a8-a76a-42bf-82d3-ab48afe62b71",
+            "cases": [
+              {
+                "arguments": [
+                  "@child.results.count_actores"
+                ],
+                "type": "has_number_gt",
+                "uuid": "2bd5756b-fbb9-434e-8d7f-06c5877044b7",
+                "category_uuid": "e221686d-55c6-457d-b825-5cd1b19a1db8"
+              },
+              {
+                "arguments": [],
+                "type": "has_number",
+                "uuid": "47359b61-6607-4943-9054-90f2fdcb299e",
+                "category_uuid": "d228d37c-c803-4ad7-b292-25eabcd76743"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "e221686d-55c6-457d-b825-5cd1b19a1db8",
+                "name": ">Results",
+                "exit_uuid": "df321766-fcd7-41a9-89a0-996b824bd916"
+              },
+              {
+                "uuid": "d228d37c-c803-4ad7-b292-25eabcd76743",
+                "name": "Has Number",
+                "exit_uuid": "4dc5aa58-b5f6-4000-9867-5ca377073356"
+              },
+              {
+                "uuid": "be5b48a8-a76a-42bf-82d3-ab48afe62b71",
+                "name": "Other",
+                "exit_uuid": "1168c33c-0051-42f8-919c-1c2b1e59bc98"
+              },
+              {
+                "uuid": "5c3e7821-2d1e-4d67-93ee-6987da6dcb81",
+                "name": "No Response",
+                "exit_uuid": "00c6bd62-e950-4b03-9c65-b4cac4599326"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg",
+              "timeout": {
+                "seconds": 300,
+                "category_uuid": "5c3e7821-2d1e-4d67-93ee-6987da6dcb81"
+              }
+            },
+            "result_name": "seleccion_victima"
+          },
+          "exits": [
+            {
+              "uuid": "df321766-fcd7-41a9-89a0-996b824bd916",
+              "destination_uuid": "faebe55d-28f5-4be8-9785-fc9add84699b"
+            },
+            {
+              "uuid": "4dc5aa58-b5f6-4000-9867-5ca377073356",
+              "destination_uuid": "d598c450-a7b9-4599-a9cf-90986949884b"
+            },
+            {
+              "uuid": "1168c33c-0051-42f8-919c-1c2b1e59bc98",
+              "destination_uuid": "4f2ecee9-9718-4330-bf0a-fb0f498a6a6d"
+            },
+            {
+              "uuid": "00c6bd62-e950-4b03-9c65-b4cac4599326",
+              "destination_uuid": "6877bba6-7593-40f3-8bb6-ae9b6777e8f9"
+            }
+          ]
+        },
+        {
+          "uuid": "6877bba6-7593-40f3-8bb6-ae9b6777e8f9",
+          "actions": [
+            {
+              "uuid": "bb151a99-2841-4452-9fcb-10690af6aba4",
+              "type": "enter_flow",
+              "flow": {
+                "uuid": "7fc271f3-0c8c-483a-ae7d-4b4791c64562",
+                "name": "expiracion"
+              }
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@child.status",
+            "cases": [
+              {
+                "uuid": "e77567ec-dfc6-4a6e-9570-30fb1a5b0728",
+                "type": "has_only_text",
+                "arguments": [
+                  "completed"
+                ],
+                "category_uuid": "6a2ad2ef-036a-4845-a82a-c2488a3fd301"
+              },
+              {
+                "uuid": "61afec22-d56b-4f2c-bfaf-bfaae60d32d3",
+                "arguments": [
+                  "expired"
+                ],
+                "type": "has_only_text",
+                "category_uuid": "865c6f02-c664-4dae-b2bb-43283496e81f"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "6a2ad2ef-036a-4845-a82a-c2488a3fd301",
+                "name": "Complete",
+                "exit_uuid": "e13528f7-2095-4522-bf43-20601f7c4734"
+              },
+              {
+                "uuid": "865c6f02-c664-4dae-b2bb-43283496e81f",
+                "name": "Expired",
+                "exit_uuid": "e7cebd29-1b00-4b97-896f-bff8fda9d21a"
+              }
+            ],
+            "default_category_uuid": "865c6f02-c664-4dae-b2bb-43283496e81f"
+          },
+          "exits": [
+            {
+              "uuid": "e13528f7-2095-4522-bf43-20601f7c4734",
+              "destination_uuid": "1b9834ae-718c-4e9c-be9e-a1970ceb546d"
+            },
+            {
+              "uuid": "e7cebd29-1b00-4b97-896f-bff8fda9d21a",
+              "destination_uuid": "3727d71e-3d09-4db9-badd-a74665f2cbfc"
+            }
+          ]
+        },
+        {
+          "uuid": "4f2ecee9-9718-4330-bf0a-fb0f498a6a6d",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Por favor selecciona un n\u00famero de la siguiente lista: \n\n@child.results.listado_actores",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "7d2df4c4-dfd4-4a9f-a61e-cb3008febe39"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "99e1a63b-cf20-42c8-8597-2cf58c0e60d5",
+              "destination_uuid": "0848f2cf-8640-464f-b2d9-e96021fdb1d8"
+            }
+          ]
+        },
+        {
+          "uuid": "3727d71e-3d09-4db9-badd-a74665f2cbfc",
+          "actions": [
+            {
+              "uuid": "a32fd3d8-1bb6-40fd-af66-25dd6898b355",
+              "type": "enter_flow",
+              "flow": {
+                "uuid": "9e6f3c1a-79dd-4b53-9dfb-9d905b022361",
+                "name": "Salir"
+              }
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@child.status",
+            "cases": [
+              {
+                "uuid": "ba4a8cd2-083c-42a6-8d89-b75305cc7667",
+                "type": "has_only_text",
+                "arguments": [
+                  "completed"
+                ],
+                "category_uuid": "6bfa8130-87fa-4b46-b066-547e1fd0c39f"
+              },
+              {
+                "uuid": "396e2c19-ec1b-42f9-885e-af5353731511",
+                "arguments": [
+                  "expired"
+                ],
+                "type": "has_only_text",
+                "category_uuid": "7c17c4b1-1081-499d-9c98-b93e5596c8d2"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "6bfa8130-87fa-4b46-b066-547e1fd0c39f",
+                "name": "Complete",
+                "exit_uuid": "4a402002-1ec4-486f-bb09-b0bb5d6b9fbe"
+              },
+              {
+                "uuid": "7c17c4b1-1081-499d-9c98-b93e5596c8d2",
+                "name": "Expired",
+                "exit_uuid": "d5269c7f-9240-4c23-8a98-10a839c24cc1"
+              }
+            ],
+            "default_category_uuid": "7c17c4b1-1081-499d-9c98-b93e5596c8d2"
+          },
+          "exits": [
+            {
+              "uuid": "4a402002-1ec4-486f-bb09-b0bb5d6b9fbe",
+              "destination_uuid": null
+            },
+            {
+              "uuid": "d5269c7f-9240-4c23-8a98-10a839c24cc1",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "faebe55d-28f5-4be8-9785-fc9add84699b",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "El n\u00famero es mayor a la lista de opciones selecciona, un n\u00famero menor o igual a @child.results.count_actores en la siguiente lista:\n\n@child.results.listado_actores ",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "6067f0c8-6714-457f-9606-d519c458219d"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "37ab2402-7350-4584-9a2b-85cebabad81d",
+              "destination_uuid": "0848f2cf-8640-464f-b2d9-e96021fdb1d8"
+            }
+          ]
+        },
+        {
+          "uuid": "d598c450-a7b9-4599-a9cf-90986949884b",
+          "actions": [
+            {
+              "uuid": "31fbd546-8bde-4c20-8a12-8596b066fca7",
+              "headers": {
+                "Accept": "application/json",
+                "Authorization": "@globals.apikey"
+              },
+              "type": "call_webhook",
+              "url": "https://api.airtable.com/v0/appuJ7N7aZFvOLBrD/Actores_viales?filterByFormula={id_actor}=%27@results.seleccion_victima%27",
+              "body": "",
+              "method": "GET",
+              "result_name": "Result"
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@results.result.category",
+            "cases": [
+              {
+                "uuid": "29508186-7b09-4787-bf62-0f6374c18a8e",
+                "type": "has_only_text",
+                "arguments": [
+                  "Success"
+                ],
+                "category_uuid": "b897ddad-e4a6-4dad-b2b2-53611d329063"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "b897ddad-e4a6-4dad-b2b2-53611d329063",
+                "name": "Success",
+                "exit_uuid": "c0049b11-18db-4ff4-aec2-7a0b924e85ac"
+              },
+              {
+                "uuid": "c69c2a32-61da-4a3b-9aa6-04961e9e7706",
+                "name": "Failure",
+                "exit_uuid": "8c466c32-626c-4fea-b3a9-084a2bb74afc"
+              }
+            ],
+            "default_category_uuid": "c69c2a32-61da-4a3b-9aa6-04961e9e7706"
+          },
+          "exits": [
+            {
+              "uuid": "c0049b11-18db-4ff4-aec2-7a0b924e85ac",
+              "destination_uuid": "cf7613bb-10ba-4c98-8b4a-4d502988970e"
+            },
+            {
+              "uuid": "8c466c32-626c-4fea-b3a9-084a2bb74afc",
+              "destination_uuid": "64db77e8-b705-4d7b-937f-ae7131911c1e"
+            }
+          ]
+        },
+        {
+          "uuid": "64db77e8-b705-4d7b-937f-ae7131911c1e",
+          "actions": [
+            {
+              "addresses": [
+                "luzchoquej@gmail.com"
+              ],
+              "subject": "Error en el Flujo de TUMI CAF",
+              "body": "Hemos encontrado un problema en el flujo de Tum CAF \n\nLa salida del webhook que produjo la falla fue esta: \n\n@legacy_extra\n\nAlgunos otros datos del problema se pueden ver aqui: \n\nContacto:@contact \nURN:@urns\nFields:@fields\nWebhook:@legacy_extra\nResults:@results\nInput:@input\nRun:@run\n",
+              "type": "send_email",
+              "uuid": "85f70e65-9789-47bf-b16e-50cf537346f6"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "c55a3f63-01f8-470e-9ace-bdec00debfe5",
+              "destination_uuid": "245730e8-fe4d-4ef3-8fe0-55af52ab469a"
+            }
+          ]
+        },
+        {
+          "uuid": "245730e8-fe4d-4ef3-8fe0-55af52ab469a",
+          "actions": [
+            {
+              "attachments": [
+                "video:https://dl-textit.s3.amazonaws.com/orgs/17968/media/56ad/56aded4f-932c-4ec7-9d6c-ddb2e838b1e9/monkey-look-the-other-way.mp4"
+              ],
+              "text": "Lo sentimos, en este momento estamos experimentando dificultades t\u00e9cnicas al realizar consultas en nuestra base de datos. \n\nEste problema ya ha sido reportado a nuestro equipo de desarrollo y estamos trabajando para solucionarlo lo antes posible. \n\nAgradecemos tu paciencia y comprensi\u00f3n, y nos disculpamos por cualquier inconveniente que esto pueda causar. ",
+              "type": "send_msg",
+              "all_urns": false,
+              "quick_replies": [],
+              "uuid": "9387a65c-68e8-43ed-8c0d-f58e8c7e2cdb"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "a5cd19e0-9fdb-436e-8253-5265af8d034a",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "cf7613bb-10ba-4c98-8b4a-4d502988970e",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "id_actor_victima",
+              "value": "@webhook.records.0.id",
+              "category": "",
+              "uuid": "c9dafbac-f58f-471d-9262-4e3a2e6aee73"
+            },
+            {
+              "type": "set_run_result",
+              "name": "json_victima",
+              "value": "\"victima\": [\"@results.id_actor_victima\"],",
+              "category": "",
+              "uuid": "af2183c6-79f7-4254-a579-7f4756b9fec3"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "b89eed81-5c34-4320-bbd9-6d17cbea15a5",
+              "destination_uuid": "35056868-d32b-4898-a4ac-7659b809aa7d"
+            }
+          ]
+        },
+        {
+          "uuid": "35056868-d32b-4898-a4ac-7659b809aa7d",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "3d48c187-2f54-495b-ac9c-52765e8e6f93",
+            "categories": [
+              {
+                "uuid": "c9f6fe15-6cf0-4dd0-8c7d-d100363915bf",
+                "name": "Pregunta Involucrados",
+                "exit_uuid": "8a3ac082-730f-4bf0-af25-61a778fed5f7"
+              },
+              {
+                "uuid": "550be47c-e4f3-42c7-b76a-c5063d534b75",
+                "name": "Sin involucrados",
+                "exit_uuid": "68cfa50d-dcde-4405-ae8d-7b0472204f65"
+              },
+              {
+                "uuid": "3d48c187-2f54-495b-ac9c-52765e8e6f93",
+                "name": "Other",
+                "exit_uuid": "01f2c1c6-795d-437a-8901-95d9a90a5dd8"
+              }
+            ],
+            "cases": [
+              {
+                "arguments": [
+                  "False"
+                ],
+                "type": "has_any_word",
+                "uuid": "c592c1c8-081d-41da-a8f2-aa1359c3c6e9",
+                "category_uuid": "c9f6fe15-6cf0-4dd0-8c7d-d100363915bf"
+              },
+              {
+                "arguments": [
+                  "True"
+                ],
+                "type": "has_any_word",
+                "uuid": "75d976b1-ac22-484b-b689-da86f6caa099",
+                "category_uuid": "550be47c-e4f3-42c7-b76a-c5063d534b75"
+              }
+            ],
+            "operand": "@(is_error(child.results.pregunta_involucrados))"
+          },
+          "exits": [
+            {
+              "uuid": "8a3ac082-730f-4bf0-af25-61a778fed5f7",
+              "destination_uuid": "d721b9b8-2f51-477e-a08b-f6d87dae2502"
+            },
+            {
+              "uuid": "68cfa50d-dcde-4405-ae8d-7b0472204f65",
+              "destination_uuid": "23d3c8c5-2098-4798-a140-0a5f3d9bd780"
+            },
+            {
+              "uuid": "01f2c1c6-795d-437a-8901-95d9a90a5dd8"
+            }
+          ]
+        },
+        {
+          "uuid": "d721b9b8-2f51-477e-a08b-f6d87dae2502",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "@child.results.pregunta_involucrados\n\nPor favor selecciona de esta lista de actores viales: \n\n@child.results.listado_actores ",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "30c4a60b-f075-47dc-9462-9a9c5d3ed146"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "a4af2e71-d101-4924-b68e-5a68157308d0",
+              "destination_uuid": "6379cd21-998f-4deb-a318-cc6e3db3f2d6"
+            }
+          ]
+        },
+        {
+          "uuid": "6379cd21-998f-4deb-a318-cc6e3db3f2d6",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "67b5a7d8-f536-4906-be22-d245f4822bdc",
+            "cases": [
+              {
+                "arguments": [
+                  "@child.results.count_actores"
+                ],
+                "type": "has_number_gt",
+                "uuid": "476890d4-fda2-4a09-b390-64dfe060afa0",
+                "category_uuid": "de6990ea-32bf-4676-bfdd-9e524820c055"
+              },
+              {
+                "arguments": [],
+                "type": "has_number",
+                "uuid": "a7b0d221-4a19-4ad6-b642-e7fe0bdeb636",
+                "category_uuid": "864cc608-97be-4ec2-889d-e8fac54b07b4"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "de6990ea-32bf-4676-bfdd-9e524820c055",
+                "name": ">Results",
+                "exit_uuid": "015e706b-6590-4d98-98d3-a3f9c0848ebd"
+              },
+              {
+                "uuid": "864cc608-97be-4ec2-889d-e8fac54b07b4",
+                "name": "Has Number",
+                "exit_uuid": "ac5d77c3-b0c5-40eb-a389-66552550e979"
+              },
+              {
+                "uuid": "67b5a7d8-f536-4906-be22-d245f4822bdc",
+                "name": "Other",
+                "exit_uuid": "c4b67e01-2710-485d-92d5-ad2652e251e1"
+              },
+              {
+                "uuid": "7271c4a5-0141-4a00-b234-805bc93b3e33",
+                "name": "No Response",
+                "exit_uuid": "16f9ec25-5c07-4839-a4e5-527af6975385"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg",
+              "timeout": {
+                "seconds": 300,
+                "category_uuid": "7271c4a5-0141-4a00-b234-805bc93b3e33"
+              }
+            },
+            "result_name": "seleccion_involucrado"
+          },
+          "exits": [
+            {
+              "uuid": "015e706b-6590-4d98-98d3-a3f9c0848ebd",
+              "destination_uuid": "e19f627c-5de9-4310-a4cb-8d92149f8583"
+            },
+            {
+              "uuid": "ac5d77c3-b0c5-40eb-a389-66552550e979",
+              "destination_uuid": "313257a2-29d7-4221-adac-51b873deaec8"
+            },
+            {
+              "uuid": "c4b67e01-2710-485d-92d5-ad2652e251e1",
+              "destination_uuid": "e8c1b958-18ab-4f25-b52d-df0ba664af6c"
+            },
+            {
+              "uuid": "16f9ec25-5c07-4839-a4e5-527af6975385",
+              "destination_uuid": "b921cbee-edb5-4e76-90c0-bed4367c0369"
+            }
+          ]
+        },
+        {
+          "uuid": "b921cbee-edb5-4e76-90c0-bed4367c0369",
+          "actions": [
+            {
+              "uuid": "10126c1a-3c4e-42cc-bd72-895ccff3d3fb",
+              "type": "enter_flow",
+              "flow": {
+                "uuid": "7fc271f3-0c8c-483a-ae7d-4b4791c64562",
+                "name": "expiracion"
+              }
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@child.status",
+            "cases": [
+              {
+                "uuid": "7b146d98-cf93-4223-a2f9-a167fb4e104c",
+                "type": "has_only_text",
+                "arguments": [
+                  "completed"
+                ],
+                "category_uuid": "a2d38205-0b3d-4244-9416-0e3979a54b9c"
+              },
+              {
+                "uuid": "4b38809c-24eb-4f62-86f9-e8fdcb7bb080",
+                "arguments": [
+                  "expired"
+                ],
+                "type": "has_only_text",
+                "category_uuid": "0c9f982c-5c2a-4608-8b14-b3c5e0a20faa"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "a2d38205-0b3d-4244-9416-0e3979a54b9c",
+                "name": "Complete",
+                "exit_uuid": "d906ed87-98f0-4493-8acd-6d6e564f93bf"
+              },
+              {
+                "uuid": "0c9f982c-5c2a-4608-8b14-b3c5e0a20faa",
+                "name": "Expired",
+                "exit_uuid": "a1d986cd-e16b-4d2a-9c42-d036ce0d12b3"
+              }
+            ],
+            "default_category_uuid": "0c9f982c-5c2a-4608-8b14-b3c5e0a20faa"
+          },
+          "exits": [
+            {
+              "uuid": "d906ed87-98f0-4493-8acd-6d6e564f93bf",
+              "destination_uuid": "d721b9b8-2f51-477e-a08b-f6d87dae2502"
+            },
+            {
+              "uuid": "a1d986cd-e16b-4d2a-9c42-d036ce0d12b3",
+              "destination_uuid": "183fc1c7-0b09-44ac-b2ca-6364d94e15ac"
+            }
+          ]
+        },
+        {
+          "uuid": "183fc1c7-0b09-44ac-b2ca-6364d94e15ac",
+          "actions": [
+            {
+              "uuid": "890a2987-e6af-413f-acda-16370fc7d9a8",
+              "type": "enter_flow",
+              "flow": {
+                "uuid": "9e6f3c1a-79dd-4b53-9dfb-9d905b022361",
+                "name": "Salir"
+              }
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@child.status",
+            "cases": [
+              {
+                "uuid": "434db01d-8357-4c6c-b64f-ab6087594840",
+                "type": "has_only_text",
+                "arguments": [
+                  "completed"
+                ],
+                "category_uuid": "cd8147d3-4469-455d-aab4-bddf6e95b2bb"
+              },
+              {
+                "uuid": "f63c4e3f-d5eb-4a63-8368-19a88229120f",
+                "arguments": [
+                  "expired"
+                ],
+                "type": "has_only_text",
+                "category_uuid": "e1ae9550-86f0-4bcc-8d1a-7f796e3bbc44"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "cd8147d3-4469-455d-aab4-bddf6e95b2bb",
+                "name": "Complete",
+                "exit_uuid": "a6593055-3f1b-4a0b-b2d8-bf8cfe2c19ce"
+              },
+              {
+                "uuid": "e1ae9550-86f0-4bcc-8d1a-7f796e3bbc44",
+                "name": "Expired",
+                "exit_uuid": "a35b72f4-0de5-4775-963c-b90013724d31"
+              }
+            ],
+            "default_category_uuid": "e1ae9550-86f0-4bcc-8d1a-7f796e3bbc44"
+          },
+          "exits": [
+            {
+              "uuid": "a6593055-3f1b-4a0b-b2d8-bf8cfe2c19ce",
+              "destination_uuid": null
+            },
+            {
+              "uuid": "a35b72f4-0de5-4775-963c-b90013724d31",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "e8c1b958-18ab-4f25-b52d-df0ba664af6c",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Por favor selecciona un n\u00famero de la siguiente lista: \n\n@child.results.listado_actores",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "069584a5-cccf-4a12-a632-25964f9c80bb"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "c5c225e9-ff3d-46ea-a714-357a871a77db",
+              "destination_uuid": "6379cd21-998f-4deb-a318-cc6e3db3f2d6"
+            }
+          ]
+        },
+        {
+          "uuid": "e19f627c-5de9-4310-a4cb-8d92149f8583",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "El n\u00famero es mayor a la lista de opciones selecciona, un n\u00famero menor o igual a @child.results.count_actores en la siguiente lista:\n\n@child.results.listado_actores ",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "cb70d1ff-d1f3-4171-b397-8e48e9ede936"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "7d2fcc5b-b491-4d5b-bb1a-14f942ee3b4e",
+              "destination_uuid": "6379cd21-998f-4deb-a318-cc6e3db3f2d6"
+            }
+          ]
+        },
+        {
+          "uuid": "313257a2-29d7-4221-adac-51b873deaec8",
+          "actions": [
+            {
+              "uuid": "892b2995-50f3-4d15-8bbe-b370f6eff9fa",
+              "headers": {
+                "Accept": "application/json",
+                "Authorization": "@globals.apikey"
+              },
+              "type": "call_webhook",
+              "url": "https://api.airtable.com/v0/appuJ7N7aZFvOLBrD/Actores_viales?filterByFormula={id_actor}=%27@results.seleccion_involucrado%27",
+              "body": "",
+              "method": "GET",
+              "result_name": "Result"
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@results.result.category",
+            "cases": [
+              {
+                "uuid": "8b654f59-d658-4ca0-83d7-fd293ef0d0c6",
+                "type": "has_only_text",
+                "arguments": [
+                  "Success"
+                ],
+                "category_uuid": "dcdf4727-ed40-49f8-b4db-e1d172d85e35"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "dcdf4727-ed40-49f8-b4db-e1d172d85e35",
+                "name": "Success",
+                "exit_uuid": "fd843996-6f97-499f-a09d-34535c725435"
+              },
+              {
+                "uuid": "86fa55e1-bb7c-4ed0-a3be-55b6e60a9597",
+                "name": "Failure",
+                "exit_uuid": "652c506c-ab32-4baa-91fc-828aa0a1a50d"
+              }
+            ],
+            "default_category_uuid": "86fa55e1-bb7c-4ed0-a3be-55b6e60a9597"
+          },
+          "exits": [
+            {
+              "uuid": "fd843996-6f97-499f-a09d-34535c725435",
+              "destination_uuid": "2795b2f8-66e1-459a-a869-0c3dc3ff8f8c"
+            },
+            {
+              "uuid": "652c506c-ab32-4baa-91fc-828aa0a1a50d",
+              "destination_uuid": "9b3c4e18-6a75-4450-9186-1202554c517d"
+            }
+          ]
+        },
+        {
+          "uuid": "9b3c4e18-6a75-4450-9186-1202554c517d",
+          "actions": [
+            {
+              "addresses": [
+                "luzchoquej@gmail.com"
+              ],
+              "subject": "Error en el Flujo de TUMI CAF",
+              "body": "Hemos encontrado un problema en el flujo de Tum CAF \n\nLa salida del webhook que produjo la falla fue esta: \n\n@legacy_extra\n\nAlgunos otros datos del problema se pueden ver aqui: \n\nContacto:@contact \nURN:@urns\nFields:@fields\nWebhook:@legacy_extra\nResults:@results\nInput:@input\nRun:@run",
+              "type": "send_email",
+              "uuid": "3eac7df4-ff5f-4e89-9689-30f117432daf"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "36894d5b-b165-4610-a22b-4d90751e8202",
+              "destination_uuid": "9c58eef6-1fcc-4e05-95c4-6be310d6f27b"
+            }
+          ]
+        },
+        {
+          "uuid": "9c58eef6-1fcc-4e05-95c4-6be310d6f27b",
+          "actions": [
+            {
+              "attachments": [
+                "video:https://dl-textit.s3.amazonaws.com/orgs/17968/media/56ad/56aded4f-932c-4ec7-9d6c-ddb2e838b1e9/monkey-look-the-other-way.mp4"
+              ],
+              "text": "Lo sentimos, en este momento estamos experimentando dificultades t\u00e9cnicas al realizar consultas en nuestra base de datos. \n\nEste problema ya ha sido reportado a nuestro equipo de desarrollo y estamos trabajando para solucionarlo lo antes posible. \n\nAgradecemos tu paciencia y comprensi\u00f3n, y nos disculpamos por cualquier inconveniente que esto pueda causar. ",
+              "type": "send_msg",
+              "all_urns": false,
+              "quick_replies": [],
+              "uuid": "c6a5ad3d-5231-4eb8-86ac-050f60a05ef9"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "869edd51-7d2a-467a-8aec-6aac2aeacc7d",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "2795b2f8-66e1-459a-a869-0c3dc3ff8f8c",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "id_actor_involucrado",
+              "value": "@webhook.records.0.id",
+              "category": "",
+              "uuid": "d424f2d7-28b6-47f2-a593-896b373f9176"
+            },
+            {
+              "type": "set_run_result",
+              "name": "json_involucrado ",
+              "value": "\"involucrados\": [\"@results.id_actor_involucrado\"],",
+              "category": "",
+              "uuid": "3c62f6d4-db5e-4d30-a896-fa9c3f697c88"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "c2d8d177-20ae-47d4-b693-9da1faf0879e",
+              "destination_uuid": "23d3c8c5-2098-4798-a140-0a5f3d9bd780"
+            }
+          ]
+        },
+        {
+          "uuid": "23d3c8c5-2098-4798-a140-0a5f3d9bd780",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "b1709847-e74a-4f91-92a5-6e4b2144ea11",
+            "categories": [
+              {
+                "uuid": "9139d018-8185-4bed-8468-f0a87e0a5a08",
+                "name": "True",
+                "exit_uuid": "9c2d1344-8f41-4c2a-90ef-273f18be9cb6"
+              },
+              {
+                "uuid": "f082e05b-13a5-4ec4-b243-a29c5e80e4a7",
+                "name": "False",
+                "exit_uuid": "7a662074-05ed-437b-9e66-8ede1c0c5475"
+              },
+              {
+                "uuid": "b1709847-e74a-4f91-92a5-6e4b2144ea11",
+                "name": "Other",
+                "exit_uuid": "40a8fe8e-64a2-4e86-8921-11aab6ced442"
+              }
+            ],
+            "cases": [
+              {
+                "arguments": [
+                  "true"
+                ],
+                "type": "has_any_word",
+                "uuid": "62cc4c12-3306-43a0-aa23-61a0ce427c87",
+                "category_uuid": "9139d018-8185-4bed-8468-f0a87e0a5a08"
+              },
+              {
+                "arguments": [
+                  "false"
+                ],
+                "type": "has_any_word",
+                "uuid": "652e46ee-e85a-4f57-970f-d93408c71e02",
+                "category_uuid": "f082e05b-13a5-4ec4-b243-a29c5e80e4a7"
+              }
+            ],
+            "operand": "@results.tiemponoimporta"
+          },
+          "exits": [
+            {
+              "uuid": "9c2d1344-8f41-4c2a-90ef-273f18be9cb6",
+              "destination_uuid": "d17a8d6b-0bb8-45e9-ae5d-d8e749a23b82"
+            },
+            {
+              "uuid": "7a662074-05ed-437b-9e66-8ede1c0c5475",
+              "destination_uuid": "2ca2d8c9-3da9-4708-b1dc-106d36585274"
+            },
+            {
+              "uuid": "40a8fe8e-64a2-4e86-8921-11aab6ced442",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "2ca2d8c9-3da9-4708-b1dc-106d36585274",
+          "actions": [
+            {
+              "uuid": "8d98461d-2c8e-4742-818f-9b98cd995a92",
+              "type": "enter_flow",
+              "flow": {
+                "uuid": "bfd4241d-deb6-490a-9b98-ae7593df7b04",
+                "name": "tiempo"
+              }
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@child.status",
+            "cases": [
+              {
+                "uuid": "2b585d64-60aa-4cc4-9cb7-df418b36a3d8",
+                "type": "has_only_text",
+                "arguments": [
+                  "completed"
+                ],
+                "category_uuid": "a91f753b-9707-40f7-829a-e6dbd46f78d4"
+              },
+              {
+                "uuid": "e64b2127-d648-4f80-8585-41006283bb75",
+                "arguments": [
+                  "expired"
+                ],
+                "type": "has_only_text",
+                "category_uuid": "ce374c45-334d-4086-9d68-105ac319925c"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "a91f753b-9707-40f7-829a-e6dbd46f78d4",
+                "name": "Complete",
+                "exit_uuid": "6e5b3495-6280-4c53-b477-fbf4eef8b2cc"
+              },
+              {
+                "uuid": "ce374c45-334d-4086-9d68-105ac319925c",
+                "name": "Expired",
+                "exit_uuid": "9bf2ad1a-6e24-4960-908e-891a5f3f46a4"
+              }
+            ],
+            "default_category_uuid": "ce374c45-334d-4086-9d68-105ac319925c"
+          },
+          "exits": [
+            {
+              "uuid": "6e5b3495-6280-4c53-b477-fbf4eef8b2cc",
+              "destination_uuid": "3e4e6a81-63c8-4c4e-9b2a-f28129704807"
+            },
+            {
+              "uuid": "9bf2ad1a-6e24-4960-908e-891a5f3f46a4",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "3e4e6a81-63c8-4c4e-9b2a-f28129704807",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "fechahora ",
+              "value": "@child.results.fechahora ",
+              "category": "",
+              "uuid": "9fa0daf7-1254-424f-a28c-45d3a47c3434"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "444cae76-9120-43da-95bd-9e84907f35b2",
+              "destination_uuid": "cfbce0a9-5f39-4be8-9e51-e6bc105e7087"
+            }
+          ]
+        },
+        {
+          "uuid": "d17a8d6b-0bb8-45e9-ae5d-d8e749a23b82",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "fechahora ",
+              "value": "@(now())",
+              "category": "",
+              "uuid": "d3f3e6af-8f32-4df3-9ccd-8e832364db83"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "fabdd1a9-6fa7-4509-ab93-84165ffaccb5",
               "destination_uuid": "cfbce0a9-5f39-4be8-9e51-e6bc105e7087"
             }
           ]
@@ -779,65 +1790,6 @@
           ]
         },
         {
-          "uuid": "60974481-d51a-43dc-9fcd-622bfafae1b9",
-          "actions": [],
-          "router": {
-            "type": "switch",
-            "default_category_uuid": "93dc2594-8b91-4c62-ac25-035980e30763",
-            "categories": [
-              {
-                "uuid": "22035088-e10d-48cf-8401-e4db165161a1",
-                "name": "Coordenada",
-                "exit_uuid": "22e84e36-3da2-44e1-abf1-d5172a5d914d"
-              },
-              {
-                "uuid": "93dc2594-8b91-4c62-ac25-035980e30763",
-                "name": "Other",
-                "exit_uuid": "daae65c9-8ddc-4fa3-a951-1f307098123a"
-              }
-            ],
-            "cases": [
-              {
-                "arguments": [
-                  "-?\\d{1,2}(\\.\\d+)?,-?\\d{1,3}(\\.\\d+)?"
-                ],
-                "type": "has_pattern",
-                "uuid": "536d7531-3c89-4f12-a649-89736cd375c2",
-                "category_uuid": "22035088-e10d-48cf-8401-e4db165161a1"
-              }
-            ],
-            "operand": "@results.gps"
-          },
-          "exits": [
-            {
-              "uuid": "22e84e36-3da2-44e1-abf1-d5172a5d914d",
-              "destination_uuid": "e853424f-db07-4f65-9918-985bb1272f2a"
-            },
-            {
-              "uuid": "daae65c9-8ddc-4fa3-a951-1f307098123a",
-              "destination_uuid": "23f16a36-f6e5-444c-88e2-6a41e630c89a"
-            }
-          ]
-        },
-        {
-          "uuid": "e853424f-db07-4f65-9918-985bb1272f2a",
-          "actions": [
-            {
-              "type": "set_run_result",
-              "name": "jsonposicion",
-              "value": "\"Latitud\": @(field(input, 0, \",\")), \"Longitud\": @(field(input, 1, \",\")),",
-              "category": "",
-              "uuid": "16f96aa2-d46b-4b4e-850f-fba783f22246"
-            }
-          ],
-          "exits": [
-            {
-              "uuid": "a12633f9-b19e-4c96-aedc-a3bec07ab052",
-              "destination_uuid": "be72875a-a431-446a-9f92-192b29c2649b"
-            }
-          ]
-        },
-        {
           "uuid": "c66735ae-425f-4059-9fe6-220d1673b690",
           "actions": [
             {
@@ -948,6 +1900,24 @@
             {
               "uuid": "a55524ce-25cf-4e62-b43d-3dcb67d83974",
               "destination_uuid": "2e1a723a-cf5b-4fc8-a0be-281b6886187c"
+            }
+          ]
+        },
+        {
+          "uuid": "e853424f-db07-4f65-9918-985bb1272f2a",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "jsonposicion",
+              "value": "\"Latitud\": @(field(input, 0, \",\")), \"Longitud\": @(field(input, 1, \",\")),",
+              "category": "",
+              "uuid": "16f96aa2-d46b-4b4e-850f-fba783f22246"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "a12633f9-b19e-4c96-aedc-a3bec07ab052",
+              "destination_uuid": "be72875a-a431-446a-9f92-192b29c2649b"
             }
           ]
         },
@@ -1064,6 +2034,47 @@
             {
               "uuid": "b8abf7d6-26db-4e78-8155-0a64f14cac30",
               "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "60974481-d51a-43dc-9fcd-622bfafae1b9",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "93dc2594-8b91-4c62-ac25-035980e30763",
+            "categories": [
+              {
+                "uuid": "22035088-e10d-48cf-8401-e4db165161a1",
+                "name": "Coordenada",
+                "exit_uuid": "22e84e36-3da2-44e1-abf1-d5172a5d914d"
+              },
+              {
+                "uuid": "93dc2594-8b91-4c62-ac25-035980e30763",
+                "name": "Other",
+                "exit_uuid": "daae65c9-8ddc-4fa3-a951-1f307098123a"
+              }
+            ],
+            "cases": [
+              {
+                "arguments": [
+                  "-?\\d{1,2}(\\.\\d+)?,-?\\d{1,3}(\\.\\d+)?"
+                ],
+                "type": "has_pattern",
+                "uuid": "536d7531-3c89-4f12-a649-89736cd375c2",
+                "category_uuid": "22035088-e10d-48cf-8401-e4db165161a1"
+              }
+            ],
+            "operand": "@results.gps"
+          },
+          "exits": [
+            {
+              "uuid": "22e84e36-3da2-44e1-abf1-d5172a5d914d",
+              "destination_uuid": "e853424f-db07-4f65-9918-985bb1272f2a"
+            },
+            {
+              "uuid": "daae65c9-8ddc-4fa3-a951-1f307098123a",
+              "destination_uuid": "23f16a36-f6e5-444c-88e2-6a41e630c89a"
             }
           ]
         },
@@ -1578,7 +2589,7 @@
               },
               "type": "call_webhook",
               "url": "https://api.airtable.com/v0/appuJ7N7aZFvOLBrD/Reportes",
-              "body": "{\n      \"fields\": {\n        \"Telefono\": \"@contact.urn\",\n        \"idcategoria\": [\n           \"@results.categoria\"\n        ],\n        @results.jsonposicion\n        @results.jsonfotografia\n        \"IdUsuario\": [ \"@contact.fields.idusuario\" ],\n        \"Descripcion del evento\": \"@results.texto\"\n      }\n    }",
+              "body": "{\n      \"fields\": {\n        \"idcategoria\": [\n           \"@results.categoria\"\n        ],\n        @results.jsonposicion\n        @results.jsonfotografia\n        \"IdUsuario\": [ \"@contact.fields.idusuario\" ],\n        \"Descripcion del evento\": \"@results.texto\",\n        \"fecha_evento\": \"@results.fechahora\",\n        \"victima\": \"@results.id_actor_victima\",\n        \"involucrados\": \"@results.id_actor_involucrado\"\n      },\n\"typecast\": true\n    }",
               "method": "POST",
               "result_name": "Conexion"
             }
@@ -2051,7 +3062,7 @@
           "actions": [
             {
               "attachments": [],
-              "text": "Tenemos estos datos tuyos, \n\nGenero: @webhook.fields.Genero\nEdad: @webhook.fields.Edad\nDiscapacidad: @webhook.fields.Discapacidad\nEducacion: @webhook.fields.Educacion\nLugar de residencia: @webhook.fields.Vivir\nEstrato: @webhook.fields.Estrato\nTrabajo: @webhook.fields.Trabajo\nModo: @webhook.fields.Modo\n\nQuisieras corregirlos o terminar nuestra conversacion",
+              "text": "Tenemos estos datos tuyos, \n\nGenero: @webhook.fields.Genero\nEdad: @webhook.fields.Edad\nDiscapacidad: @webhook.fields.Discapacidad\nEducacion: @webhook.fields.Educacion\nLugar de residencia: @webhook.fields.Vivir\nEstrato: @webhook.fields.Estrato\nTrabajo: @webhook.fields.Trabajo\nModo: @webhook.fields.Modo\n\n\u00bfQuisieras corregirlos o terminar nuestra conversaci\u00f3n?",
               "type": "send_msg",
               "quick_replies": [
                 "Corregir",
@@ -2147,7 +3158,7 @@
           "actions": [
             {
               "attachments": [],
-              "text": "Lo siento, no entend\u00ed lo que est\u00e1s tratando de decir porque soy un robot y a veces me confundo. Por favor, d\u00edmelo de otra forma y vuelvo a intentar.\n\nTenemos estos datos tuyos, \n\n\nGenero: @webhook.fields.Genero\nEdad: @webhook.fields.Edad\nDiscapacidad: @webhook.fields.Discapacidad\nEducacion: @webhook.fields.Educacion\nLocalidad: @webhook.fields.Vivir\nEstrato: @webhook.fields.Estrato\nTrabajo: @webhook.fields.Trabajo\nModo: @webhook.fields.Modo\n\nQuisieras corregirlos o terminar nuestra conversacion",
+              "text": "Lo siento, no entend\u00ed lo que est\u00e1s tratando de decir porque soy un robot y a veces me confundo. Por favor, d\u00edmelo de otra forma y vuelvo a intentar.\n\nTenemos estos datos tuyos, \n\n\nGenero: @webhook.fields.Genero\nEdad: @webhook.fields.Edad\nDiscapacidad: @webhook.fields.Discapacidad\nEducacion: @webhook.fields.Educacion\nLugar de residencia: @webhook.fields.Vivir\nEstrato: @webhook.fields.Estrato\nTrabajo: @webhook.fields.Trabajo\nModo: @webhook.fields.Modo\n\n\u00bfQuisieras corregirlos o terminar nuestra conversaci\u00f3n?",
               "type": "send_msg",
               "quick_replies": [
                 "Corregir",
@@ -2703,29 +3714,194 @@
           "8f8cfca8-dde7-4c16-a502-667c1dccffbe": {
             "position": {
               "left": 360,
-              "top": 2700
+              "top": 2600
             },
             "type": "execute_actions"
           },
           "e90e14a8-1062-4036-bea3-951d085aaac4": {
             "position": {
               "left": 360,
-              "top": 2920
+              "top": 2880
+            },
+            "type": "execute_actions"
+          },
+          "07de8f0e-5a82-4cfa-99f8-289b80ee47bc": {
+            "position": {
+              "left": 360,
+              "top": 3120
+            },
+            "type": "execute_actions"
+          },
+          "65da43f4-6451-4be0-99f6-98b67a0d07a4": {
+            "type": "split_by_expression",
+            "position": {
+              "left": 400,
+              "top": 3400
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "1b9834ae-718c-4e9c-be9e-a1970ceb546d": {
+            "position": {
+              "left": 220,
+              "top": 3580
+            },
+            "type": "execute_actions"
+          },
+          "0848f2cf-8640-464f-b2d9-e96021fdb1d8": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 140,
+              "top": 3900
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "4f2ecee9-9718-4330-bf0a-fb0f498a6a6d": {
+            "position": {
+              "left": 320,
+              "top": 4220
+            },
+            "type": "execute_actions"
+          },
+          "faebe55d-28f5-4be8-9785-fc9add84699b": {
+            "position": {
+              "left": 60,
+              "top": 4400
+            },
+            "type": "execute_actions"
+          },
+          "d598c450-a7b9-4599-a9cf-90986949884b": {
+            "type": "split_by_webhook",
+            "position": {
+              "left": 300,
+              "top": 4700
+            },
+            "config": {}
+          },
+          "64db77e8-b705-4d7b-937f-ae7131911c1e": {
+            "position": {
+              "left": 640,
+              "top": 5020
+            },
+            "type": "execute_actions"
+          },
+          "245730e8-fe4d-4ef3-8fe0-55af52ab469a": {
+            "position": {
+              "left": 640,
+              "top": 5140
+            },
+            "type": "execute_actions"
+          },
+          "cf7613bb-10ba-4c98-8b4a-4d502988970e": {
+            "position": {
+              "left": 180,
+              "top": 5500
+            },
+            "type": "execute_actions"
+          },
+          "35056868-d32b-4898-a4ac-7659b809aa7d": {
+            "type": "split_by_expression",
+            "position": {
+              "left": 420,
+              "top": 5860
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "d721b9b8-2f51-477e-a08b-f6d87dae2502": {
+            "position": {
+              "left": 240,
+              "top": 6040
+            },
+            "type": "execute_actions"
+          },
+          "6379cd21-998f-4deb-a318-cc6e3db3f2d6": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 240,
+              "top": 6360
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "e19f627c-5de9-4310-a4cb-8d92149f8583": {
+            "position": {
+              "left": 80,
+              "top": 7180
+            },
+            "type": "execute_actions"
+          },
+          "e8c1b958-18ab-4f25-b52d-df0ba664af6c": {
+            "position": {
+              "left": 380,
+              "top": 6980
+            },
+            "type": "execute_actions"
+          },
+          "313257a2-29d7-4221-adac-51b873deaec8": {
+            "type": "split_by_webhook",
+            "position": {
+              "left": 160,
+              "top": 7520
+            },
+            "config": {}
+          },
+          "2795b2f8-66e1-459a-a869-0c3dc3ff8f8c": {
+            "position": {
+              "left": 160,
+              "top": 8420
+            },
+            "type": "execute_actions"
+          },
+          "23d3c8c5-2098-4798-a140-0a5f3d9bd780": {
+            "type": "split_by_expression",
+            "position": {
+              "left": 420,
+              "top": 8800
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "2ca2d8c9-3da9-4708-b1dc-106d36585274": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 600,
+              "top": 8920
+            },
+            "config": {}
+          },
+          "3e4e6a81-63c8-4c4e-9b2a-f28129704807": {
+            "position": {
+              "left": 620,
+              "top": 9100
+            },
+            "type": "execute_actions"
+          },
+          "d17a8d6b-0bb8-45e9-ae5d-d8e749a23b82": {
+            "position": {
+              "left": 320,
+              "top": 9220
             },
             "type": "execute_actions"
           },
           "cfbce0a9-5f39-4be8-9e51-e6bc105e7087": {
             "position": {
-              "left": 360,
-              "top": 3240
+              "left": 420,
+              "top": 9400
             },
             "type": "execute_actions"
           },
           "84585f88-752b-4f1c-95fc-65a1e9aefc0a": {
             "type": "wait_for_response",
             "position": {
-              "left": 360,
-              "top": 3460
+              "left": 420,
+              "top": 9600
             },
             "config": {
               "cases": {}
@@ -2734,31 +3910,31 @@
           "33816440-94bc-4a5d-993f-f6df3d17ffb3": {
             "type": "split_by_subflow",
             "position": {
-              "left": 740,
-              "top": 3660
+              "left": 800,
+              "top": 9780
             },
             "config": {}
           },
           "ac5615f4-6cb5-445d-8f76-c9a072835982": {
             "type": "split_by_subflow",
             "position": {
-              "left": 740,
-              "top": 3920
+              "left": 800,
+              "top": 9980
             },
             "config": {}
           },
           "78336c63-47c2-4b72-bbcf-b95023bb534b": {
             "position": {
-              "left": 480,
-              "top": 4240
+              "left": 540,
+              "top": 10380
             },
             "type": "execute_actions"
           },
           "c46b807e-fed7-4217-94d2-c5abdd32bcb5": {
             "type": "wait_for_response",
             "position": {
-              "left": 400,
-              "top": 4560
+              "left": 460,
+              "top": 10700
             },
             "config": {
               "cases": {}
@@ -2767,31 +3943,45 @@
           "2e6992ef-7131-4bc8-8090-dd8982a3467e": {
             "type": "split_by_subflow",
             "position": {
-              "left": 840,
-              "top": 4760
+              "left": 900,
+              "top": 10900
             },
             "config": {}
           },
           "704a4728-b270-44a3-9310-06687a3edb87": {
             "type": "split_by_subflow",
             "position": {
-              "left": 840,
-              "top": 5020
+              "left": 900,
+              "top": 11160
             },
             "config": {}
           },
           "f0a097ab-1600-464e-9b14-ac7d8093c120": {
             "position": {
-              "left": 500,
-              "top": 5260
+              "left": 560,
+              "top": 11360
             },
             "type": "execute_actions"
           },
-          "60974481-d51a-43dc-9fcd-622bfafae1b9": {
-            "type": "split_by_expression",
+          "c66735ae-425f-4059-9fe6-220d1673b690": {
             "position": {
-              "left": 500,
-              "top": 5500
+              "left": 340,
+              "top": 11440
+            },
+            "type": "execute_actions"
+          },
+          "23f16a36-f6e5-444c-88e2-6a41e630c89a": {
+            "position": {
+              "left": 820,
+              "top": 11640
+            },
+            "type": "execute_actions"
+          },
+          "d34122e6-24a6-4096-9ea3-6c3e17e15ec9": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 820,
+              "top": 11900
             },
             "config": {
               "cases": {}
@@ -2799,63 +3989,49 @@
           },
           "e853424f-db07-4f65-9918-985bb1272f2a": {
             "position": {
-              "left": 480,
-              "top": 5700
+              "left": 520,
+              "top": 11960
             },
             "type": "execute_actions"
-          },
-          "c66735ae-425f-4059-9fe6-220d1673b690": {
-            "position": {
-              "left": 280,
-              "top": 5900
-            },
-            "type": "execute_actions"
-          },
-          "23f16a36-f6e5-444c-88e2-6a41e630c89a": {
-            "position": {
-              "left": 760,
-              "top": 6100
-            },
-            "type": "execute_actions"
-          },
-          "d34122e6-24a6-4096-9ea3-6c3e17e15ec9": {
-            "type": "wait_for_response",
-            "position": {
-              "left": 760,
-              "top": 6360
-            },
-            "config": {
-              "cases": {}
-            }
           },
           "2e1a723a-cf5b-4fc8-a0be-281b6886187c": {
             "type": "split_by_subflow",
             "position": {
-              "left": 1000,
-              "top": 6560
+              "left": 1060,
+              "top": 12100
             },
             "config": {}
           },
           "843eb8c1-fef8-48d5-9df5-63d122ad200d": {
             "type": "split_by_subflow",
             "position": {
-              "left": 960,
-              "top": 6840
+              "left": 1020,
+              "top": 12380
             },
             "config": {}
           },
-          "be72875a-a431-446a-9f92-192b29c2649b": {
+          "60974481-d51a-43dc-9fcd-622bfafae1b9": {
+            "type": "split_by_expression",
             "position": {
               "left": 560,
-              "top": 7060
+              "top": 12420
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "be72875a-a431-446a-9f92-192b29c2649b": {
+            "position": {
+              "left": 620,
+              "top": 12600
             },
             "type": "execute_actions"
           },
           "8e8181d1-c615-4113-8fba-1d1e77fb34f4": {
             "type": "wait_for_response",
             "position": {
-              "left": 560,
-              "top": 7340
+              "left": 620,
+              "top": 12880
             },
             "config": {
               "cases": {}
@@ -2864,31 +4040,31 @@
           "69ed8fa2-1efb-43b5-a4f3-62f24aa0edb4": {
             "type": "split_by_subflow",
             "position": {
-              "left": 860,
-              "top": 7520
+              "left": 920,
+              "top": 13060
             },
             "config": {}
           },
           "382dc593-a8e9-4981-a3ac-3a3a981d1058": {
             "type": "split_by_subflow",
             "position": {
-              "left": 860,
-              "top": 7680
+              "left": 920,
+              "top": 13220
             },
             "config": {}
           },
           "e48b70e7-f894-4a45-acbf-80057b1d393a": {
             "position": {
-              "left": 600,
-              "top": 7860
+              "left": 660,
+              "top": 13400
             },
             "type": "execute_actions"
           },
           "59f64d65-d3ae-40db-ba54-1f52c7e794ec": {
             "type": "split_by_run_result",
             "position": {
-              "left": 600,
-              "top": 8060
+              "left": 660,
+              "top": 13600
             },
             "config": {
               "operand": {
@@ -2901,16 +4077,16 @@
           },
           "e7e42791-a449-4045-b0f6-9a6e9e90b629": {
             "position": {
-              "left": 1180,
-              "top": 8240
+              "left": 1240,
+              "top": 13780
             },
             "type": "execute_actions"
           },
           "ffcd999e-c85d-4ac7-87ea-cfe1d000ad17": {
             "type": "wait_for_response",
             "position": {
-              "left": 860,
-              "top": 8480
+              "left": 920,
+              "top": 14020
             },
             "config": {
               "cases": {}
@@ -2919,67 +4095,67 @@
           "71a62164-d68f-4a78-8ffc-d1f713adfb68": {
             "type": "split_by_subflow",
             "position": {
-              "left": 1120,
-              "top": 8660
+              "left": 1180,
+              "top": 14200
             },
             "config": {}
           },
           "2b10ea69-ce55-4948-a963-7be38128d25e": {
             "type": "split_by_subflow",
             "position": {
-              "left": 1120,
-              "top": 8840
+              "left": 1180,
+              "top": 14380
             },
             "config": {}
           },
           "9d5d588c-4fc2-4df4-bcd0-00925c56f04c": {
             "position": {
-              "left": 380,
-              "top": 9060
+              "left": 440,
+              "top": 14600
             },
             "type": "execute_actions"
           },
           "c5dc0c77-aa9f-4f8f-a8d1-38748db3c9bd": {
             "position": {
-              "left": 680,
-              "top": 9280
+              "left": 780,
+              "top": 14680
             },
             "type": "execute_actions"
           },
           "a67bfcf5-37e5-4fb3-b3cc-067cd321e087": {
             "type": "split_by_webhook",
             "position": {
-              "left": 460,
-              "top": 9520
+              "left": 520,
+              "top": 15080
             },
             "config": {}
           },
           "49697361-1ea0-4c5f-a118-93676314a9d9": {
             "position": {
-              "left": 860,
-              "top": 9760
+              "left": 920,
+              "top": 15300
             },
             "type": "execute_actions"
           },
           "dadfb33b-05b1-403b-9c2f-a88db3b89ca0": {
             "position": {
-              "left": 860,
-              "top": 9880
+              "left": 920,
+              "top": 15420
             },
             "type": "execute_actions"
           },
           "8bbe7dcb-a8cd-4e55-96dc-0185b101f196": {
             "position": {
-              "left": 460,
-              "top": 10380
+              "left": 560,
+              "top": 15940
             },
             "type": "execute_actions"
           },
           "3a1db5fc-af15-4823-bc9e-8840b884c740": {
             "type": "wait_for_response",
             "position": {
-              "left": 460,
-              "top": 10620
+              "left": 520,
+              "top": 16200
             },
             "config": {
               "cases": {}
@@ -2988,39 +4164,39 @@
           "0331b4be-e61a-49da-8e8c-77b2cf7e8a44": {
             "type": "split_by_subflow",
             "position": {
-              "left": 280,
-              "top": 10760
+              "left": 340,
+              "top": 16420
             },
             "config": {}
           },
           "2858dadd-d2d8-48fd-94b0-a987aee82ca8": {
             "position": {
-              "left": 780,
-              "top": 10880
+              "left": 840,
+              "top": 16420
             },
             "type": "execute_actions"
           },
           "8b54ce3d-6dea-4c06-ad32-6693d23712e0": {
             "type": "split_by_subflow",
             "position": {
-              "left": 700,
-              "top": 11260
+              "left": 760,
+              "top": 16800
             },
             "config": {}
           },
           "0ca0613e-f55c-424e-9fa9-fcad346f505b": {
             "type": "split_by_subflow",
             "position": {
-              "left": 700,
-              "top": 11420
+              "left": 760,
+              "top": 16960
             },
             "config": {}
           },
           "129005d7-2003-47ff-bac9-4b453f82bb54": {
             "type": "split_by_contact_field",
             "position": {
-              "left": 440,
-              "top": 11660
+              "left": 500,
+              "top": 17200
             },
             "config": {
               "operand": {
@@ -3034,23 +4210,23 @@
           "f754ae79-8591-4793-99a6-385a0efcb3a8": {
             "type": "split_by_webhook",
             "position": {
-              "left": 260,
-              "top": 11920
+              "left": 320,
+              "top": 17460
             },
             "config": {}
           },
           "bc1f6d35-1454-4e32-a81a-c36b2c75314d": {
             "position": {
-              "left": 260,
-              "top": 12220
+              "left": 320,
+              "top": 17760
             },
             "type": "execute_actions"
           },
           "5ef15faa-6d28-4491-afcf-f2d049d8847e": {
             "type": "wait_for_response",
             "position": {
-              "left": 260,
-              "top": 13300
+              "left": 300,
+              "top": 18840
             },
             "config": {
               "cases": {}
@@ -3058,47 +4234,47 @@
           },
           "b428b819-4dbd-4c04-b451-b4dcaa2a5813": {
             "position": {
-              "left": 780,
-              "top": 13480
+              "left": 1040,
+              "top": 19000
             },
             "type": "execute_actions"
           },
           "60589659-56c2-4c5a-b884-9796f32e3a76": {
             "type": "split_by_subflow",
             "position": {
-              "left": 720,
-              "top": 14140
+              "left": 460,
+              "top": 19640
             },
             "config": {}
           },
           "b2f3c788-7f9d-41d9-a6c6-07c43953f8fe": {
             "type": "split_by_subflow",
             "position": {
-              "left": 640,
-              "top": 14320
+              "left": 780,
+              "top": 19920
             },
             "config": {}
           },
           "c2bccc96-501b-45da-9816-2c199072c1a7": {
             "type": "split_by_subflow",
             "position": {
-              "left": 340,
-              "top": 14540
+              "left": 260,
+              "top": 20080
             },
             "config": {}
           },
           "fb3cebc2-5ebc-4dbd-a470-102eb89a91be": {
             "position": {
-              "left": 400,
-              "top": 15060
+              "left": 460,
+              "top": 20600
             },
             "type": "execute_actions"
           },
           "082d55de-788b-4631-9ece-40bcea7d746f": {
             "type": "wait_for_response",
             "position": {
-              "left": 400,
-              "top": 15360
+              "left": 460,
+              "top": 20900
             },
             "config": {
               "cases": {}
@@ -3106,32 +4282,78 @@
           },
           "e8e7dee7-859d-498f-bfe8-90394d7e9846": {
             "position": {
-              "left": 840,
-              "top": 15480
+              "left": 900,
+              "top": 21020
             },
             "type": "execute_actions"
           },
           "75929f03-98c5-41ff-ad39-65ea57873cb7": {
             "type": "split_by_subflow",
             "position": {
-              "left": 680,
-              "top": 15840
+              "left": 720,
+              "top": 21340
             },
             "config": {}
           },
           "af1071ff-63bf-4a71-9df2-2f0c8ad9a1ee": {
             "type": "split_by_subflow",
             "position": {
-              "left": 680,
-              "top": 16020
+              "left": 740,
+              "top": 21560
             },
             "config": {}
           },
           "fd027f3b-2a9c-4d19-8ba1-19b988c8ad48": {
             "type": "split_by_subflow",
             "position": {
-              "left": 400,
-              "top": 16340
+              "left": 460,
+              "top": 21880
+            },
+            "config": {}
+          },
+          "9b3c4e18-6a75-4450-9186-1202554c517d": {
+            "position": {
+              "left": 380,
+              "top": 7820
+            },
+            "type": "execute_actions"
+          },
+          "9c58eef6-1fcc-4e05-95c4-6be310d6f27b": {
+            "position": {
+              "left": 380,
+              "top": 7960
+            },
+            "type": "execute_actions"
+          },
+          "6877bba6-7593-40f3-8bb6-ae9b6777e8f9": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 680,
+              "top": 4000
+            },
+            "config": {}
+          },
+          "3727d71e-3d09-4db9-badd-a74665f2cbfc": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 620,
+              "top": 4220
+            },
+            "config": {}
+          },
+          "b921cbee-edb5-4e76-90c0-bed4367c0369": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 680,
+              "top": 6640
+            },
+            "config": {}
+          },
+          "183fc1c7-0b09-44ac-b2ca-6364d94e15ac": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 660,
+              "top": 6840
             },
             "config": {}
           }
@@ -3195,9 +4417,9 @@
           "8c6ebb86-052c-4c19-93d5-b61e25fe8cf9": {
             "position": {
               "left": 80,
-              "top": 2920,
+              "top": 2880,
               "right": -40,
-              "bottom": 20
+              "bottom": -20
             },
             "title": "110. Categoria",
             "body": "ata categor\u00eda tiene un Id en airtable, el objetivo del \u00e1rbol de categor\u00edas es obtener ese id para que se escriba en la tabla de reportes. Aqu\u00ed se almacena en una variable local que luego ser\u00e1 escrita en el reporte. ",
@@ -3205,10 +4427,10 @@
           },
           "acaa1009-748f-4c0c-a8c3-b76b279c5ad2": {
             "position": {
-              "left": 80,
-              "top": 3460,
-              "right": -40,
-              "bottom": 300
+              "left": 140,
+              "top": 9600,
+              "right": 20,
+              "bottom": 6440
             },
             "title": "120",
             "body": "...",
@@ -3216,10 +4438,10 @@
           },
           "eedcaddd-c066-47cf-96a3-9eb0d3c7d986": {
             "position": {
-              "left": 80,
-              "top": 3240,
-              "right": -40,
-              "bottom": -120
+              "left": 140,
+              "top": 9320,
+              "right": 20,
+              "bottom": 5960
             },
             "title": "130",
             "body": "...",
@@ -3227,10 +4449,10 @@
           },
           "200b459d-4766-4faf-b38b-88c9073b697c": {
             "position": {
-              "left": 80,
-              "top": 4240,
-              "right": -40,
-              "bottom": 680
+              "left": 140,
+              "top": 10380,
+              "right": 20,
+              "bottom": 6820
             },
             "title": "140. Solicitud de localizaci\u00f3n ",
             "body": "Se solicita la localizaci\u00f3n del GPS",
@@ -3238,10 +4460,10 @@
           },
           "0bfe4c68-4244-4926-8dd6-741d7c67a3ab": {
             "position": {
-              "left": 80,
-              "top": 4560,
-              "right": -40,
-              "bottom": 700
+              "left": 140,
+              "top": 10700,
+              "right": 20,
+              "bottom": 6840
             },
             "title": "150",
             "body": "Se espera la respuesta para saber si va a enviar coordenada o no ",
@@ -3249,10 +4471,10 @@
           },
           "da326fbf-4714-4fdd-92fb-380c31085105": {
             "position": {
-              "left": 60,
-              "top": 5700,
-              "right": -40,
-              "bottom": 580
+              "left": 100,
+              "top": 12940,
+              "right": 0,
+              "bottom": 7820
             },
             "title": "170. C\u00f3digo para webhook.",
             "body": "Se extrae la longitud y longitud y se pone un c\u00f3digo de json para luego poner en el webhook de escritura del reporte en airtable. ",
@@ -3260,10 +4482,10 @@
           },
           "31a70dc0-df54-419b-aa0a-7ae65171a8d1": {
             "position": {
-              "left": 60,
-              "top": 7060,
-              "right": -40,
-              "bottom": 1720
+              "left": 120,
+              "top": 12600,
+              "right": 20,
+              "bottom": 7260
             },
             "title": "180. Solicitud de fotografia",
             "body": "...",
@@ -3271,10 +4493,10 @@
           },
           "ec0d2565-d7ef-4eaa-a4a1-751024e06351": {
             "position": {
-              "left": 60,
-              "top": 7340,
-              "right": -40,
-              "bottom": 1660
+              "left": 120,
+              "top": 13120,
+              "right": 20,
+              "bottom": 7440
             },
             "title": "190 Sin foto",
             "body": "SE evalua si no se quiere la foto ",
@@ -3282,10 +4504,10 @@
           },
           "673af61e-837f-440e-ad1e-2f62d405d63c": {
             "position": {
-              "left": 100,
-              "top": 9060,
-              "right": 0,
-              "bottom": 3200
+              "left": 160,
+              "top": 14600,
+              "right": 60,
+              "bottom": 8740
             },
             "title": "200. Sin fotografia",
             "body": "En caso de no tener fotograf\u00eda se deja en blanco el valor del json que se pondr\u00e1 en el webhook",
@@ -3293,10 +4515,10 @@
           },
           "f32befcc-b073-4996-a1c9-5764cdc5013c": {
             "position": {
-              "left": 100,
-              "top": 9260,
-              "right": 0,
-              "bottom": 3200
+              "left": 160,
+              "top": 14800,
+              "right": 60,
+              "bottom": 8740
             },
             "title": "210. Con fotograf\u00eda",
             "body": "Se crea el JSON de la fotograf\u00eda que ser\u00e1 escrito en el webhook",
@@ -3304,10 +4526,10 @@
           },
           "451fc0c1-1290-400c-9bae-684556341e39": {
             "position": {
-              "left": 100,
-              "top": 9520,
-              "right": 0,
-              "bottom": 3180
+              "left": 160,
+              "top": 15060,
+              "right": 60,
+              "bottom": 8720
             },
             "title": "220. POST Webhook de fotograf\u00eda ",
             "body": "Se crea el reporte en airtable. \nSe usan las variables: \n\n@results.categoria\n@results.jsonposicion\n@results.jsonfotografia\n@contact.fields.idusuario\n@results.texto",
@@ -3315,10 +4537,10 @@
           },
           "d0c0f4ac-351c-4102-b12b-02bd0ce6d9ad": {
             "position": {
-              "left": 0,
-              "top": 15060,
-              "right": -80,
-              "bottom": 7780
+              "left": 80,
+              "top": 20600,
+              "right": 0,
+              "bottom": 13320
             },
             "title": "240",
             "body": "Solicitud de informaci\u00f3n de perfil",
@@ -3326,10 +4548,10 @@
           },
           "64204229-6d6e-4676-a745-1037d829d491": {
             "position": {
-              "left": 0,
-              "top": 15360,
-              "right": -300,
-              "bottom": 6400
+              "left": 80,
+              "top": 20900,
+              "right": -220,
+              "bottom": 11940
             },
             "title": "300. Respuesta perfil",
             "body": "Respuesta a la solicitud de informaci\u00f3n de perfil ",
@@ -3337,10 +4559,10 @@
           },
           "e518af51-bc27-4ad9-a0c0-069629665fa5": {
             "position": {
-              "left": 0,
-              "top": 10380,
-              "right": -220,
-              "bottom": 820
+              "left": 80,
+              "top": 15920,
+              "right": -140,
+              "bottom": 6360
             },
             "title": "320. Pregunta de nuevo reporte",
             "body": "Pregunta si quiere hacer un nuevo reporte.",
@@ -3348,10 +4570,10 @@
           },
           "14d6cdda-28d9-4c2d-9a5c-e477b4b0fe23": {
             "position": {
-              "left": 120,
-              "top": 16340,
-              "right": -100,
-              "bottom": 6560
+              "left": 180,
+              "top": 21880,
+              "right": -40,
+              "bottom": 12100
             },
             "title": "340. Flujo datos Perfil ",
             "body": "En caso de si querer responder a informaci\u00f3n de perfil se env\u00eda a este flujo ",
@@ -3359,10 +4581,10 @@
           },
           "57b6114d-4c74-4895-b9d3-1d3f4dc7260f": {
             "position": {
-              "left": 60,
-              "top": 5260,
-              "right": -20,
-              "bottom": 220
+              "left": 120,
+              "top": 11400,
+              "right": 40,
+              "bottom": 6360
             },
             "title": "152",
             "body": "Se recibe la coordenada, pero debe guardarse la variable de esta forma para que puede ser interpretada, en telegram se puede directamente pero en whatsapp se requiere este paso intermedio para capturar la coordenada",
@@ -3370,10 +4592,10 @@
           },
           "20a80620-69fe-4376-8635-91425d15eed8": {
             "position": {
-              "left": 60,
-              "top": 5500,
-              "right": -60,
-              "bottom": 1200
+              "left": 120,
+              "top": 12720,
+              "right": 0,
+              "bottom": 8420
             },
             "title": "154",
             "body": "Se Corre una expresi\u00f3n regular para saber si los datos corresponde a una coordenada, la expresi\u00f3n regular es esta: \n\n-?\\d{1,2}(\\.\\d+)?,-?\\d{1,3}(\\.\\d+)?",
@@ -3381,10 +4603,10 @@
           },
           "4e570fda-765b-4955-a8d4-84d6a61cd358": {
             "position": {
-              "left": 60,
-              "top": 7860,
-              "right": -40,
-              "bottom": 1920
+              "left": 120,
+              "top": 13400,
+              "right": 20,
+              "bottom": 7460
             },
             "title": "192",
             "body": "Se catura la utl de la foto en la cariable @results.urlfoto",
@@ -3392,10 +4614,10 @@
           },
           "609c6619-57fa-42ae-b655-aba864b8252c": {
             "position": {
-              "left": 60,
-              "top": 8060,
-              "right": 40,
-              "bottom": 960
+              "left": 120,
+              "top": 13600,
+              "right": 100,
+              "bottom": 6500
             },
             "title": "194 Es una foto o archivo? ",
             "body": "Se eval\u00faa si lo que viene es una foto o archivo ",
@@ -3403,10 +4625,10 @@
           },
           "a3dcc023-7850-4d72-bf1c-83e2b50583a7": {
             "position": {
-              "left": 80,
-              "top": 8480,
-              "right": 20,
-              "bottom": 1180
+              "left": 140,
+              "top": 14020,
+              "right": 80,
+              "bottom": 6720
             },
             "title": "196 Si no viene foto ",
             "body": "En caso de no ser una foto se pregunta si se quiere reintentar",
@@ -3414,10 +4636,10 @@
           },
           "9475a3ef-fb3b-4873-a320-727e77b2025b": {
             "position": {
-              "left": 60,
-              "top": 8260,
-              "right": -40,
-              "bottom": 1640
+              "left": 120,
+              "top": 13800,
+              "right": 20,
+              "bottom": 7180
             },
             "title": "198",
             "body": "...",
@@ -3425,10 +4647,10 @@
           },
           "1d2b4278-59d5-4841-9513-5bfe29f1720a": {
             "position": {
-              "left": 40,
-              "top": 16020,
-              "right": -220,
-              "bottom": 4520
+              "left": 100,
+              "top": 21560,
+              "right": -160,
+              "bottom": 10060
             },
             "title": "330 Agradecimiento",
             "body": "Se agradece al usuario y termina",
@@ -3459,9 +4681,9 @@
           "bb05ced6-70f3-43a9-8624-06810ffea86a": {
             "position": {
               "left": 80,
-              "top": 2700,
+              "top": 2600,
               "right": 0,
-              "bottom": -820
+              "bottom": -920
             },
             "title": "55",
             "body": "...",
@@ -3469,10 +4691,10 @@
           },
           "8fc0c947-86ae-45eb-b5d8-c03733bf15f6": {
             "position": {
-              "left": 100,
-              "top": 9780,
-              "right": 0,
-              "bottom": -640
+              "left": 160,
+              "top": 15320,
+              "right": 60,
+              "bottom": 4900
             },
             "title": "222 Correo",
             "body": "Envio de correo de error y despedida",
@@ -3480,10 +4702,10 @@
           },
           "04d84f78-10b1-4962-816c-1b7193712cc4": {
             "position": {
-              "left": 80,
-              "top": 3660,
-              "right": null,
-              "bottom": null
+              "left": 140,
+              "top": 9800,
+              "right": 60,
+              "bottom": 6140
             },
             "title": "121",
             "body": "...",
@@ -3491,10 +4713,10 @@
           },
           "0616b642-7770-44b9-aaa6-30f10b29a3b0": {
             "position": {
-              "left": 80,
-              "top": 3920,
-              "right": null,
-              "bottom": null
+              "left": 140,
+              "top": 10060,
+              "right": 60,
+              "bottom": 6140
             },
             "title": "122",
             "body": "...",
@@ -3502,10 +4724,10 @@
           },
           "9f432981-d3c2-40e2-937a-f3f7ad61e2de": {
             "position": {
-              "left": 60,
-              "top": 5900,
-              "right": null,
-              "bottom": null
+              "left": 120,
+              "top": 12460,
+              "right": 60,
+              "bottom": 6560
             },
             "title": "171",
             "body": "Se deja en blanco el valor del json cuando no hay coordenada",
@@ -3513,7 +4735,7 @@
           }
         }
       },
-      "revision": 4043,
+      "revision": 4338,
       "expire_after_minutes": 10080,
       "localization": {}
     },
@@ -3570,20 +4792,11 @@
                 "uuid": "cbdbe9eb-958c-42b0-84a9-dae5f2b4650d",
                 "name": "Other",
                 "exit_uuid": "a628967e-cc6a-43fd-a7a7-67d0e4ba887f"
-              },
-              {
-                "uuid": "00eaa89c-2b68-4554-af87-d5ed0bab9784",
-                "name": "No Response",
-                "exit_uuid": "822e84de-8a7f-4b14-a7ee-4f86a8abc0c4"
               }
             ],
             "operand": "@input.text",
             "wait": {
-              "type": "msg",
-              "timeout": {
-                "seconds": 300,
-                "category_uuid": "00eaa89c-2b68-4554-af87-d5ed0bab9784"
-              }
+              "type": "msg"
             },
             "result_name": "opcion"
           },
@@ -3594,10 +4807,6 @@
             {
               "uuid": "a628967e-cc6a-43fd-a7a7-67d0e4ba887f",
               "destination_uuid": "2ed9c43a-eb71-4d20-a9cd-8e25e01aad2b"
-            },
-            {
-              "uuid": "822e84de-8a7f-4b14-a7ee-4f86a8abc0c4",
-              "destination_uuid": null
             }
           ]
         },
@@ -3627,7 +4836,7 @@
           "39c3b94a-9df2-4fae-9c06-1162e2f3e69e": {
             "position": {
               "left": 560,
-              "top": 60
+              "top": 40
             },
             "type": "execute_actions"
           },
@@ -3655,13 +4864,24 @@
               "left": 20,
               "top": 40
             },
-            "title": "New Note",
-            "body": "...",
+            "title": "10. Pregunta de permanec\u00eda",
+            "body": "Pregunta al usuario de su permanec\u00eda en el flujo",
             "color": "green"
+          },
+          "134d4e34-5e19-4f47-8af1-252dff9fd564": {
+            "position": {
+              "left": 20,
+              "top": 360,
+              "right": -20,
+              "bottom": 40
+            },
+            "title": "11. Repuesta",
+            "body": "Obtenci\u00f3n de la respuesta del usuario",
+            "color": "yellow"
           }
         }
       },
-      "revision": 39,
+      "revision": 55,
       "expire_after_minutes": 5,
       "localization": {}
     },
@@ -3824,11 +5044,11 @@
           "uuid": "ddb85e7c-4440-40ba-a0c4-555d3023d3ef",
           "actions": [
             {
-              "attachments": [],
-              "text": "Guardar informacion de la hora actual? Ir siguiente pregunta",
-              "type": "send_msg",
-              "quick_replies": [],
-              "uuid": "55516673-c1ce-4ac3-a414-ffeb96a43ca2"
+              "type": "set_run_result",
+              "name": "fechahora",
+              "value": "@(now())",
+              "category": "",
+              "uuid": "8e4765b0-9e09-42b0-a541-eb2c4ee355b6"
             }
           ],
           "exits": [
@@ -3918,27 +5138,6 @@
           ]
         },
         {
-          "uuid": "404cc012-40b3-475f-9a6a-975d1aa500f2",
-          "actions": [
-            {
-              "attachments": [],
-              "text": "\u00bfCu\u00e1ndo fue?",
-              "type": "send_msg",
-              "quick_replies": [
-                "Hoy",
-                "Otro d\u00eda"
-              ],
-              "uuid": "c6199fca-1d37-4a47-954b-ebc3bb199b78"
-            }
-          ],
-          "exits": [
-            {
-              "uuid": "482636d4-5127-44fa-8033-4623397fd6b1",
-              "destination_uuid": "2b98aa52-dacc-4f1e-865b-3bb17bee330a"
-            }
-          ]
-        },
-        {
           "uuid": "34277ca8-3ca2-49f9-b47b-84f642f31b66",
           "actions": [
             {
@@ -3993,6 +5192,27 @@
             {
               "uuid": "4959bcb4-eaa8-41de-a47b-f1463ed08457",
               "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "404cc012-40b3-475f-9a6a-975d1aa500f2",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "\u00bfCu\u00e1ndo fue?",
+              "type": "send_msg",
+              "quick_replies": [
+                "Hoy",
+                "Otro d\u00eda"
+              ],
+              "uuid": "c6199fca-1d37-4a47-954b-ebc3bb199b78"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "482636d4-5127-44fa-8033-4623397fd6b1",
+              "destination_uuid": "2b98aa52-dacc-4f1e-865b-3bb17bee330a"
             }
           ]
         },
@@ -4055,7 +5275,7 @@
           "exits": [
             {
               "uuid": "f72b5dc3-e3e9-40ee-a093-81eed41aa9bc",
-              "destination_uuid": "5f9d01d8-e34e-4c24-8c6a-69b3e863174e"
+              "destination_uuid": "0f1e056d-2b3f-43b4-8192-4b839540562a"
             },
             {
               "uuid": "cce47a2b-b074-4a15-9d62-3db8ce30cae8",
@@ -4125,7 +5345,65 @@
             },
             {
               "uuid": "edc06880-c57e-449b-8eaf-2e051b5075f7",
-              "destination_uuid": "34277ca8-3ca2-49f9-b47b-84f642f31b66"
+              "destination_uuid": "fd5d9146-5b24-417b-8eae-c994a24bb45d"
+            }
+          ]
+        },
+        {
+          "uuid": "fd5d9146-5b24-417b-8eae-c994a24bb45d",
+          "actions": [
+            {
+              "uuid": "fe84d51c-e474-4a83-92a5-b2501120a75f",
+              "type": "enter_flow",
+              "flow": {
+                "uuid": "9e6f3c1a-79dd-4b53-9dfb-9d905b022361",
+                "name": "Salir"
+              }
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@child.status",
+            "cases": [
+              {
+                "uuid": "3eb57acb-83d9-47dc-a00f-7c891d74a6ac",
+                "type": "has_only_text",
+                "arguments": [
+                  "completed"
+                ],
+                "category_uuid": "e8babcdd-5f11-49ec-8660-b33e1f21694b"
+              },
+              {
+                "uuid": "7849f430-7fd4-4593-9808-4da21ac7bbca",
+                "arguments": [
+                  "expired"
+                ],
+                "type": "has_only_text",
+                "category_uuid": "53f7bbd0-6311-4077-b80d-8d14bbf4234d"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "e8babcdd-5f11-49ec-8660-b33e1f21694b",
+                "name": "Complete",
+                "exit_uuid": "993178e1-ca4b-4770-8ad3-5dce9789af2b"
+              },
+              {
+                "uuid": "53f7bbd0-6311-4077-b80d-8d14bbf4234d",
+                "name": "Expired",
+                "exit_uuid": "be853c8c-6d19-41d1-b070-5477658454aa"
+              }
+            ],
+            "default_category_uuid": "53f7bbd0-6311-4077-b80d-8d14bbf4234d"
+          },
+          "exits": [
+            {
+              "uuid": "993178e1-ca4b-4770-8ad3-5dce9789af2b",
+              "destination_uuid": null
+            },
+            {
+              "uuid": "be853c8c-6d19-41d1-b070-5477658454aa",
+              "destination_uuid": null
             }
           ]
         },
@@ -4147,6 +5425,250 @@
             {
               "uuid": "c3994e3d-a4ee-4bd5-a127-900774a0b23d",
               "destination_uuid": "2b98aa52-dacc-4f1e-865b-3bb17bee330a"
+            }
+          ]
+        },
+        {
+          "uuid": "0f1e056d-2b3f-43b4-8192-4b839540562a",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "fecha",
+              "value": "@(format_date(now(),\"YYYY-MM-DD\"))",
+              "category": "",
+              "uuid": "9053afba-f89c-46a0-8510-5f6e870d3dde"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "6bcdaf67-6f20-4398-ab82-a11fba0f3827",
+              "destination_uuid": "5f9d01d8-e34e-4c24-8c6a-69b3e863174e"
+            }
+          ]
+        },
+        {
+          "uuid": "d1b95522-7099-4e9f-a73d-712ab953b965",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "Por favor escribe la fecha en formato DD/MM/AAAA",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "f375e364-53a4-4624-ac0b-737f88ef1096"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "b4596807-5f90-4e8a-bc29-c0a95668f476",
+              "destination_uuid": "7f60be61-bd1f-4ffa-a3c0-538862a53e94"
+            }
+          ]
+        },
+        {
+          "uuid": "7f60be61-bd1f-4ffa-a3c0-538862a53e94",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "6f935026-cf88-410f-ab8a-467ce1ff1a09",
+            "cases": [
+              {
+                "arguments": [],
+                "type": "has_date",
+                "uuid": "5ed59f46-f415-4c0e-b625-22a0136580cb",
+                "category_uuid": "560d61b1-2e13-40d2-84f2-66de6ad82696"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "560d61b1-2e13-40d2-84f2-66de6ad82696",
+                "name": "Has Date",
+                "exit_uuid": "a535e79f-3cd7-44ba-9be7-c526ebcecf31"
+              },
+              {
+                "uuid": "6f935026-cf88-410f-ab8a-467ce1ff1a09",
+                "name": "Other",
+                "exit_uuid": "8b1bc891-fb2b-44fd-b113-cd474568d6d8"
+              },
+              {
+                "uuid": "c3a897ab-485b-4cad-96cc-0bdfdd2775ed",
+                "name": "No Response",
+                "exit_uuid": "65dd3673-74a5-4964-95c1-eb9edf3339ee"
+              }
+            ],
+            "operand": "@input.text",
+            "wait": {
+              "type": "msg",
+              "timeout": {
+                "seconds": 300,
+                "category_uuid": "c3a897ab-485b-4cad-96cc-0bdfdd2775ed"
+              }
+            },
+            "result_name": "fecha"
+          },
+          "exits": [
+            {
+              "uuid": "a535e79f-3cd7-44ba-9be7-c526ebcecf31",
+              "destination_uuid": "25e3f7cf-f057-4a59-ba5e-e204f595c85a"
+            },
+            {
+              "uuid": "8b1bc891-fb2b-44fd-b113-cd474568d6d8",
+              "destination_uuid": "824f7698-c209-46b7-a853-13249a99421e"
+            },
+            {
+              "uuid": "65dd3673-74a5-4964-95c1-eb9edf3339ee",
+              "destination_uuid": "62cd66aa-1325-48ca-a954-a1376a15da40"
+            }
+          ]
+        },
+        {
+          "uuid": "824f7698-c209-46b7-a853-13249a99421e",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "El dato que escribiste no es una fecha. Corr\u00edgelo al formato DD/MM/AAAA",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "c5493996-4dd6-405b-8d15-f9a823feb608"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "8eb3b0b5-db43-456d-9492-ec196fa282d2",
+              "destination_uuid": "7f60be61-bd1f-4ffa-a3c0-538862a53e94"
+            }
+          ]
+        },
+        {
+          "uuid": "62cd66aa-1325-48ca-a954-a1376a15da40",
+          "actions": [
+            {
+              "uuid": "c0f987ff-edc4-44dd-9d43-a76a37be6753",
+              "type": "enter_flow",
+              "flow": {
+                "uuid": "7fc271f3-0c8c-483a-ae7d-4b4791c64562",
+                "name": "expiracion"
+              }
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@child.status",
+            "cases": [
+              {
+                "uuid": "29e56fd2-dedc-4446-bfb5-166b5f9b5db3",
+                "type": "has_only_text",
+                "arguments": [
+                  "completed"
+                ],
+                "category_uuid": "d7167ddf-dae5-43b6-b9ac-60561b4202b0"
+              },
+              {
+                "uuid": "bfa6fbe4-4c01-47db-b449-70f2934d82c1",
+                "arguments": [
+                  "expired"
+                ],
+                "type": "has_only_text",
+                "category_uuid": "73d33752-af2e-426a-a825-b06a4c4a2961"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "d7167ddf-dae5-43b6-b9ac-60561b4202b0",
+                "name": "Complete",
+                "exit_uuid": "de89e65d-1352-402a-bef8-0c03eb188552"
+              },
+              {
+                "uuid": "73d33752-af2e-426a-a825-b06a4c4a2961",
+                "name": "Expired",
+                "exit_uuid": "0e74906a-d061-4751-85f9-d081397455a1"
+              }
+            ],
+            "default_category_uuid": "73d33752-af2e-426a-a825-b06a4c4a2961"
+          },
+          "exits": [
+            {
+              "uuid": "de89e65d-1352-402a-bef8-0c03eb188552",
+              "destination_uuid": "d1b95522-7099-4e9f-a73d-712ab953b965"
+            },
+            {
+              "uuid": "0e74906a-d061-4751-85f9-d081397455a1",
+              "destination_uuid": "5efc3209-54f9-4877-b0a3-0bb57dac978c"
+            }
+          ]
+        },
+        {
+          "uuid": "5efc3209-54f9-4877-b0a3-0bb57dac978c",
+          "actions": [
+            {
+              "uuid": "4f1fe874-457b-4dde-8ca8-7b1bf4e2d9d6",
+              "type": "enter_flow",
+              "flow": {
+                "uuid": "9e6f3c1a-79dd-4b53-9dfb-9d905b022361",
+                "name": "Salir"
+              }
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@child.status",
+            "cases": [
+              {
+                "uuid": "9e502e47-e6af-4419-9930-7a776b71d095",
+                "type": "has_only_text",
+                "arguments": [
+                  "completed"
+                ],
+                "category_uuid": "5af4a552-48d4-41f6-a6b8-9ecfb37cd939"
+              },
+              {
+                "uuid": "b0406e4c-dd27-403c-8100-8d0f0d41f5f5",
+                "arguments": [
+                  "expired"
+                ],
+                "type": "has_only_text",
+                "category_uuid": "1f4f2ce9-880f-400c-a345-8d9f103c4ca3"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "5af4a552-48d4-41f6-a6b8-9ecfb37cd939",
+                "name": "Complete",
+                "exit_uuid": "9674de93-6edc-4aba-b440-033bfe041aeb"
+              },
+              {
+                "uuid": "1f4f2ce9-880f-400c-a345-8d9f103c4ca3",
+                "name": "Expired",
+                "exit_uuid": "ef3e32a2-3e51-4dd8-8a56-3e6909fd3a4f"
+              }
+            ],
+            "default_category_uuid": "1f4f2ce9-880f-400c-a345-8d9f103c4ca3"
+          },
+          "exits": [
+            {
+              "uuid": "9674de93-6edc-4aba-b440-033bfe041aeb",
+              "destination_uuid": null
+            },
+            {
+              "uuid": "ef3e32a2-3e51-4dd8-8a56-3e6909fd3a4f",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "25e3f7cf-f057-4a59-ba5e-e204f595c85a",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "fecha",
+              "value": "@(format_date(results.fecha,\"YYYY-MM-DD\"))",
+              "category": "",
+              "uuid": "d3759f97-b843-4544-bdb8-5c9376a1da24"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "79cfea8a-4211-4440-b679-867ff775eab5",
+              "destination_uuid": "5f9d01d8-e34e-4c24-8c6a-69b3e863174e"
             }
           ]
         },
@@ -4207,12 +5729,12 @@
                 "category_uuid": "ddbe3a26-0061-4a4f-a346-bcada9c99e76"
               }
             },
-            "result_name": "Result 4"
+            "result_name": "hora"
           },
           "exits": [
             {
               "uuid": "c4d613ae-09fa-43da-af46-3e365338f81b",
-              "destination_uuid": "0e440a1a-c24c-4886-918e-d9780e840b01"
+              "destination_uuid": "b158d9f8-bc93-4c21-83a0-09b30218d268"
             },
             {
               "uuid": "a183a725-5fcc-4bd8-adc2-d9b29502987f",
@@ -4221,24 +5743,6 @@
             {
               "uuid": "4c66db38-1766-4f9e-ad6f-eaab3300c8c3",
               "destination_uuid": "2203839a-ff04-410c-957e-15192a7bc357"
-            }
-          ]
-        },
-        {
-          "uuid": "0e440a1a-c24c-4886-918e-d9780e840b01",
-          "actions": [
-            {
-              "attachments": [],
-              "text": "Guardar dato de hora. Ir siguiente pregunta",
-              "type": "send_msg",
-              "quick_replies": [],
-              "uuid": "9c0f479f-c43e-434d-8b24-0d629b8bb24d"
-            }
-          ],
-          "exits": [
-            {
-              "uuid": "588f5fdf-e53c-46ec-84b7-5dddfe860f13",
-              "destination_uuid": null
             }
           ]
         },
@@ -4377,78 +5881,218 @@
           ]
         },
         {
-          "uuid": "d1b95522-7099-4e9f-a73d-712ab953b965",
+          "uuid": "b158d9f8-bc93-4c21-83a0-09b30218d268",
           "actions": [
             {
-              "attachments": [],
-              "text": "Por favor escribe la fecha en formato DD/MM/AAAA",
-              "type": "send_msg",
-              "quick_replies": [],
-              "uuid": "f375e364-53a4-4624-ac0b-737f88ef1096"
+              "type": "set_run_result",
+              "name": "fechahora",
+              "value": "@(format_datetime(text(results.fecha)  &  text(results.hora)    ) )",
+              "category": "",
+              "uuid": "f3fbb127-3526-4c5d-86ee-a10f7879e678"
             }
           ],
           "exits": [
             {
-              "uuid": "b4596807-5f90-4e8a-bc29-c0a95668f476",
-              "destination_uuid": "7f60be61-bd1f-4ffa-a3c0-538862a53e94"
+              "uuid": "08cceaee-69bf-4d7c-bb9f-1f687e152013",
+              "destination_uuid": "4812d2da-53d9-4d7f-98ec-4f8001dddfbe"
             }
           ]
         },
         {
-          "uuid": "7f60be61-bd1f-4ffa-a3c0-538862a53e94",
+          "uuid": "4812d2da-53d9-4d7f-98ec-4f8001dddfbe",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "diff",
+              "value": "@(datetime_diff(now(),results.fechahora,\"m\"))",
+              "category": "",
+              "uuid": "94f6c214-f0ef-4a82-a2fb-f0d1ffada2ee"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "d5c8b9f4-1c5c-494f-9049-464a68eb08f8",
+              "destination_uuid": "cae4369f-1e1c-46c3-af36-235d4534e758"
+            }
+          ]
+        },
+        {
+          "uuid": "cae4369f-1e1c-46c3-af36-235d4534e758",
           "actions": [],
           "router": {
             "type": "switch",
-            "default_category_uuid": "6f935026-cf88-410f-ab8a-467ce1ff1a09",
+            "default_category_uuid": "c48e34b6-7b22-4911-a291-71b01c331841",
+            "categories": [
+              {
+                "uuid": "d09dae76-0755-4024-ab2a-03eea1db3d37",
+                "name": "Futuro",
+                "exit_uuid": "153c4743-a9d8-4954-9cd8-b10cfdaa7815"
+              },
+              {
+                "uuid": "aa03ab0f-4a4a-494f-a31e-5a80f004288d",
+                "name": " > 90 dias ",
+                "exit_uuid": "b193ddac-5b19-4b59-925e-d2b1802dbcfc"
+              },
+              {
+                "uuid": "c48e34b6-7b22-4911-a291-71b01c331841",
+                "name": "Other",
+                "exit_uuid": "b2f337e7-2568-46d8-bfc3-fe340b51ad67"
+              }
+            ],
             "cases": [
               {
                 "arguments": [
-                  "@(datetime_add(today(), -1, \"D\"))"
+                  "0"
                 ],
-                "type": "has_date_gt",
-                "uuid": "0b5d49de-66a7-42b9-9877-190e0d4e923d",
-                "category_uuid": "ebd6a0fd-57f5-428a-bc84-9649f5b9b89c"
+                "type": "has_number_gt",
+                "uuid": "ffb14bd1-ff3b-42c0-b578-e81d886eb0ed",
+                "category_uuid": "d09dae76-0755-4024-ab2a-03eea1db3d37"
               },
               {
                 "arguments": [
-                  "@(datetime_add(today(), -90, \"D\"))"
+                  "@((-1)*90*24*60)"
                 ],
-                "type": "has_date_lt",
-                "uuid": "93816e84-4c5d-4c8c-9a78-be7f5c3e3cde",
-                "category_uuid": "46f272cf-453b-4c92-b562-0cea6ef67e39"
+                "type": "has_number_lt",
+                "uuid": "291ed6bd-c4a2-4526-9523-3dd68f6a670e",
+                "category_uuid": "aa03ab0f-4a4a-494f-a31e-5a80f004288d"
+              }
+            ],
+            "operand": "@results.diff"
+          },
+          "exits": [
+            {
+              "uuid": "153c4743-a9d8-4954-9cd8-b10cfdaa7815",
+              "destination_uuid": "fc587de5-ba0e-42a9-9e18-9c41b75d6447"
+            },
+            {
+              "uuid": "b193ddac-5b19-4b59-925e-d2b1802dbcfc",
+              "destination_uuid": "4f998c5e-5c17-4c3c-9ff4-2dc3ea856ea1"
+            },
+            {
+              "uuid": "b2f337e7-2568-46d8-bfc3-fe340b51ad67",
+              "destination_uuid": "90436ae5-69bd-4d5f-95f8-abc1d35072ca"
+            }
+          ]
+        },
+        {
+          "uuid": "90436ae5-69bd-4d5f-95f8-abc1d35072ca",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "fechahora",
+              "value": "@(format_datetime(results.fechahora, \"YYYY-MM-DD tt:mm\"))",
+              "category": "",
+              "uuid": "cbf721df-de35-4fc7-8332-5c113acc346a"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "1d8999f1-1e3f-4fe2-94af-e93c0f82b5ec",
+              "destination_uuid": null
+            }
+          ]
+        },
+        {
+          "uuid": "fc587de5-ba0e-42a9-9e18-9c41b75d6447",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "La fecha / hora que ingresaste no es v\u00e1lida, pues est\u00e1 en el futuro. ",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "edc46346-5b71-4da4-9217-df24b9df5518"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "bd06fb10-595d-4fcf-ab0b-aff5a963b214",
+              "destination_uuid": "cbcc0fae-209e-4aab-a3a3-c8729896c46e"
+            }
+          ]
+        },
+        {
+          "uuid": "4f998c5e-5c17-4c3c-9ff4-2dc3ea856ea1",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "La fecha que ingresaste no es v\u00e1lida, pues tiene m\u00e1s de 90 d\u00edas.",
+              "type": "send_msg",
+              "quick_replies": [],
+              "uuid": "6d2deb68-9e1a-4983-8110-eb577425dfa1"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "db310d64-0969-4ce4-855a-4d2d5ee02bef",
+              "destination_uuid": "cbcc0fae-209e-4aab-a3a3-c8729896c46e"
+            }
+          ]
+        },
+        {
+          "uuid": "cbcc0fae-209e-4aab-a3a3-c8729896c46e",
+          "actions": [
+            {
+              "attachments": [],
+              "text": "\u00bfQuieres reintentar ingresar la fecha? ",
+              "type": "send_msg",
+              "quick_replies": [
+                "Reintentar",
+                "Terminar"
+              ],
+              "uuid": "b0b69a54-7105-47a9-b779-7b7675c69620"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "950e9c53-8387-49e9-9459-f371c8d3169f",
+              "destination_uuid": "35c5bca8-82a6-4e0f-a7ad-14e84aa4e0f4"
+            }
+          ]
+        },
+        {
+          "uuid": "35c5bca8-82a6-4e0f-a7ad-14e84aa4e0f4",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "12cc092e-d522-4396-bbab-c8eaf135c131",
+            "cases": [
+              {
+                "arguments": [
+                  "reintentar"
+                ],
+                "type": "has_any_word",
+                "uuid": "d81bf588-b2bf-471b-90d1-e95fbaaa8fa5",
+                "category_uuid": "a9e1972c-044c-4b4b-acdc-0ea1a64d2d11"
               },
               {
-                "arguments": [],
-                "type": "has_date",
-                "uuid": "5ed59f46-f415-4c0e-b625-22a0136580cb",
-                "category_uuid": "560d61b1-2e13-40d2-84f2-66de6ad82696"
+                "arguments": [
+                  "terminar"
+                ],
+                "type": "has_any_word",
+                "uuid": "ddbcfa1b-6161-4b27-8bb8-b43fd34516fa",
+                "category_uuid": "e60c9db9-6540-4906-95b7-53f6ea9111ac"
               }
             ],
             "categories": [
               {
-                "uuid": "ebd6a0fd-57f5-428a-bc84-9649f5b9b89c",
-                "name": "After today",
-                "exit_uuid": "953508fb-ab31-479d-b508-17de440f8775"
+                "uuid": "a9e1972c-044c-4b4b-acdc-0ea1a64d2d11",
+                "name": "Reintentar",
+                "exit_uuid": "95b41fd1-6cb7-46d2-988a-ef7c22f57b5b"
               },
               {
-                "uuid": "46f272cf-453b-4c92-b562-0cea6ef67e39",
-                "name": "Before today - 90 days",
-                "exit_uuid": "b96bc877-aa0e-4218-a435-523f65218f8d"
+                "uuid": "e60c9db9-6540-4906-95b7-53f6ea9111ac",
+                "name": "Terminar",
+                "exit_uuid": "04787e19-01b5-44cb-a4fe-7a8029d602de"
               },
               {
-                "uuid": "560d61b1-2e13-40d2-84f2-66de6ad82696",
-                "name": "Has Date",
-                "exit_uuid": "a535e79f-3cd7-44ba-9be7-c526ebcecf31"
-              },
-              {
-                "uuid": "6f935026-cf88-410f-ab8a-467ce1ff1a09",
+                "uuid": "12cc092e-d522-4396-bbab-c8eaf135c131",
                 "name": "Other",
-                "exit_uuid": "8b1bc891-fb2b-44fd-b113-cd474568d6d8"
+                "exit_uuid": "dcba06af-b51a-423b-91e3-259d150df77a"
               },
               {
-                "uuid": "c3a897ab-485b-4cad-96cc-0bdfdd2775ed",
+                "uuid": "58b680f4-68c2-47a7-bb64-f6cedb1369b0",
                 "name": "No Response",
-                "exit_uuid": "65dd3673-74a5-4964-95c1-eb9edf3339ee"
+                "exit_uuid": "e354989c-51e8-4698-b724-9fc69e2af7b4"
               }
             ],
             "operand": "@input.text",
@@ -4456,39 +6100,56 @@
               "type": "msg",
               "timeout": {
                 "seconds": 300,
-                "category_uuid": "c3a897ab-485b-4cad-96cc-0bdfdd2775ed"
+                "category_uuid": "58b680f4-68c2-47a7-bb64-f6cedb1369b0"
               }
             },
-            "result_name": "Result 3"
+            "result_name": "Result 8"
           },
           "exits": [
             {
-              "uuid": "953508fb-ab31-479d-b508-17de440f8775",
-              "destination_uuid": "df223558-0bbf-4e65-8b76-df03fc9c00f9"
+              "uuid": "95b41fd1-6cb7-46d2-988a-ef7c22f57b5b",
+              "destination_uuid": "650afd2d-f00a-43cd-89e6-0c5e5aebd028"
             },
             {
-              "uuid": "b96bc877-aa0e-4218-a435-523f65218f8d",
-              "destination_uuid": "fb9934f1-16a3-4c4e-92f4-7724977fcfa5"
+              "uuid": "04787e19-01b5-44cb-a4fe-7a8029d602de",
+              "destination_uuid": "f25b1f9a-2090-4a9c-a259-e6de991a137c"
             },
             {
-              "uuid": "a535e79f-3cd7-44ba-9be7-c526ebcecf31",
-              "destination_uuid": "08e099ce-4ef5-42ca-a302-cdee1a3c9c7a"
+              "uuid": "dcba06af-b51a-423b-91e3-259d150df77a",
+              "destination_uuid": "83ad4c9f-2000-406d-a480-81e6d7c50be2"
             },
             {
-              "uuid": "8b1bc891-fb2b-44fd-b113-cd474568d6d8",
-              "destination_uuid": "824f7698-c209-46b7-a853-13249a99421e"
-            },
-            {
-              "uuid": "65dd3673-74a5-4964-95c1-eb9edf3339ee",
-              "destination_uuid": "62cd66aa-1325-48ca-a954-a1376a15da40"
+              "uuid": "e354989c-51e8-4698-b724-9fc69e2af7b4",
+              "destination_uuid": "c029e6d2-5680-4be5-aa25-ac5de91836e2"
             }
           ]
         },
         {
-          "uuid": "62cd66aa-1325-48ca-a954-a1376a15da40",
+          "uuid": "83ad4c9f-2000-406d-a480-81e6d7c50be2",
           "actions": [
             {
-              "uuid": "c0f987ff-edc4-44dd-9d43-a76a37be6753",
+              "attachments": [],
+              "text": "No entend\u00ed tu respuesta \u00bfQuieres reintentar ingresar la fecha? ",
+              "type": "send_msg",
+              "quick_replies": [
+                "Reintentar",
+                "Terminar"
+              ],
+              "uuid": "ddc8f2fa-18fc-4813-854e-b8b2686a314c"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "bff02bf0-891f-4730-abd9-8a2b1572bc42",
+              "destination_uuid": "35c5bca8-82a6-4e0f-a7ad-14e84aa4e0f4"
+            }
+          ]
+        },
+        {
+          "uuid": "c029e6d2-5680-4be5-aa25-ac5de91836e2",
+          "actions": [
+            {
+              "uuid": "611acf9f-6d7c-4869-a006-1724b1a256f4",
               "type": "enter_flow",
               "flow": {
                 "uuid": "7fc271f3-0c8c-483a-ae7d-4b4791c64562",
@@ -4501,52 +6162,52 @@
             "operand": "@child.status",
             "cases": [
               {
-                "uuid": "29e56fd2-dedc-4446-bfb5-166b5f9b5db3",
+                "uuid": "23d5929f-d94f-4a6e-a772-60d38bd9fbbe",
                 "type": "has_only_text",
                 "arguments": [
                   "completed"
                 ],
-                "category_uuid": "d7167ddf-dae5-43b6-b9ac-60561b4202b0"
+                "category_uuid": "9771447c-ba7c-45c3-a809-dc41b1beebc8"
               },
               {
-                "uuid": "bfa6fbe4-4c01-47db-b449-70f2934d82c1",
+                "uuid": "8838de27-a6bf-40b2-906b-c9e3d70a1e21",
                 "arguments": [
                   "expired"
                 ],
                 "type": "has_only_text",
-                "category_uuid": "73d33752-af2e-426a-a825-b06a4c4a2961"
+                "category_uuid": "5211bd49-dced-40b7-a22c-ca6bf959176b"
               }
             ],
             "categories": [
               {
-                "uuid": "d7167ddf-dae5-43b6-b9ac-60561b4202b0",
+                "uuid": "9771447c-ba7c-45c3-a809-dc41b1beebc8",
                 "name": "Complete",
-                "exit_uuid": "de89e65d-1352-402a-bef8-0c03eb188552"
+                "exit_uuid": "235cf19d-ae85-4e77-8ee5-fe8ad1919e6e"
               },
               {
-                "uuid": "73d33752-af2e-426a-a825-b06a4c4a2961",
+                "uuid": "5211bd49-dced-40b7-a22c-ca6bf959176b",
                 "name": "Expired",
-                "exit_uuid": "0e74906a-d061-4751-85f9-d081397455a1"
+                "exit_uuid": "3ee6e36a-bb6a-47bb-8c3e-ebeceed3229c"
               }
             ],
-            "default_category_uuid": "73d33752-af2e-426a-a825-b06a4c4a2961"
+            "default_category_uuid": "5211bd49-dced-40b7-a22c-ca6bf959176b"
           },
           "exits": [
             {
-              "uuid": "de89e65d-1352-402a-bef8-0c03eb188552",
-              "destination_uuid": "d1b95522-7099-4e9f-a73d-712ab953b965"
+              "uuid": "235cf19d-ae85-4e77-8ee5-fe8ad1919e6e",
+              "destination_uuid": "cbcc0fae-209e-4aab-a3a3-c8729896c46e"
             },
             {
-              "uuid": "0e74906a-d061-4751-85f9-d081397455a1",
-              "destination_uuid": "5efc3209-54f9-4877-b0a3-0bb57dac978c"
+              "uuid": "3ee6e36a-bb6a-47bb-8c3e-ebeceed3229c",
+              "destination_uuid": "e56760c9-7e10-4b6f-bbdd-4527f866241b"
             }
           ]
         },
         {
-          "uuid": "5efc3209-54f9-4877-b0a3-0bb57dac978c",
+          "uuid": "e56760c9-7e10-4b6f-bbdd-4527f866241b",
           "actions": [
             {
-              "uuid": "4f1fe874-457b-4dde-8ca8-7b1bf4e2d9d6",
+              "uuid": "d46733ab-0303-4d79-9041-65916e9a710f",
               "type": "enter_flow",
               "flow": {
                 "uuid": "9e6f3c1a-79dd-4b53-9dfb-9d905b022361",
@@ -4559,115 +6220,61 @@
             "operand": "@child.status",
             "cases": [
               {
-                "uuid": "9e502e47-e6af-4419-9930-7a776b71d095",
+                "uuid": "d53f6f8d-76e7-41ea-8c43-247c8452979a",
                 "type": "has_only_text",
                 "arguments": [
                   "completed"
                 ],
-                "category_uuid": "5af4a552-48d4-41f6-a6b8-9ecfb37cd939"
+                "category_uuid": "7a62dc85-44a5-4c20-b6b5-d917f7e93bb1"
               },
               {
-                "uuid": "b0406e4c-dd27-403c-8100-8d0f0d41f5f5",
+                "uuid": "ab5940b0-f3c6-450f-8a39-c6889d5e913a",
                 "arguments": [
                   "expired"
                 ],
                 "type": "has_only_text",
-                "category_uuid": "1f4f2ce9-880f-400c-a345-8d9f103c4ca3"
+                "category_uuid": "beacf891-94cc-4e82-b1c0-852877d6f5f7"
               }
             ],
             "categories": [
               {
-                "uuid": "5af4a552-48d4-41f6-a6b8-9ecfb37cd939",
+                "uuid": "7a62dc85-44a5-4c20-b6b5-d917f7e93bb1",
                 "name": "Complete",
-                "exit_uuid": "9674de93-6edc-4aba-b440-033bfe041aeb"
+                "exit_uuid": "931cff55-8b07-466b-b30e-3a3273ce029e"
               },
               {
-                "uuid": "1f4f2ce9-880f-400c-a345-8d9f103c4ca3",
+                "uuid": "beacf891-94cc-4e82-b1c0-852877d6f5f7",
                 "name": "Expired",
-                "exit_uuid": "ef3e32a2-3e51-4dd8-8a56-3e6909fd3a4f"
+                "exit_uuid": "186b6c38-8e8e-41cb-93eb-8612f88cab6d"
               }
             ],
-            "default_category_uuid": "1f4f2ce9-880f-400c-a345-8d9f103c4ca3"
+            "default_category_uuid": "beacf891-94cc-4e82-b1c0-852877d6f5f7"
           },
           "exits": [
             {
-              "uuid": "9674de93-6edc-4aba-b440-033bfe041aeb",
+              "uuid": "931cff55-8b07-466b-b30e-3a3273ce029e",
               "destination_uuid": null
             },
             {
-              "uuid": "ef3e32a2-3e51-4dd8-8a56-3e6909fd3a4f",
+              "uuid": "186b6c38-8e8e-41cb-93eb-8612f88cab6d",
               "destination_uuid": null
             }
           ]
         },
         {
-          "uuid": "824f7698-c209-46b7-a853-13249a99421e",
+          "uuid": "f25b1f9a-2090-4a9c-a259-e6de991a137c",
           "actions": [
             {
-              "attachments": [],
-              "text": "El dato que escribiste no es una fecha. Corr\u00edgelo al formato DD/MM/AAAA",
-              "type": "send_msg",
-              "quick_replies": [],
-              "uuid": "c5493996-4dd6-405b-8d15-f9a823feb608"
+              "type": "set_run_result",
+              "name": "fechahora",
+              "value": "@(now())",
+              "category": "",
+              "uuid": "32c26783-6c0c-4ce9-9399-6df2df520bcb"
             }
           ],
           "exits": [
             {
-              "uuid": "8eb3b0b5-db43-456d-9492-ec196fa282d2",
-              "destination_uuid": "7f60be61-bd1f-4ffa-a3c0-538862a53e94"
-            }
-          ]
-        },
-        {
-          "uuid": "df223558-0bbf-4e65-8b76-df03fc9c00f9",
-          "actions": [
-            {
-              "attachments": [],
-              "text": "La fecha que escribiste no es v\u00e1lida, ya que corresponde  a un dato futuro.\n\nEscribe la fecha que sucedi\u00f3 el evento.",
-              "type": "send_msg",
-              "quick_replies": [],
-              "uuid": "712aafed-f5a6-4e35-a02e-044648a02c54"
-            }
-          ],
-          "exits": [
-            {
-              "uuid": "24695ca8-7614-4831-86eb-9be5403f6b09",
-              "destination_uuid": "7f60be61-bd1f-4ffa-a3c0-538862a53e94"
-            }
-          ]
-        },
-        {
-          "uuid": "fb9934f1-16a3-4c4e-92f4-7724977fcfa5",
-          "actions": [
-            {
-              "attachments": [],
-              "text": "La fecha que escribiste no es v\u00e1lida, ya que corresponde a una fecha antigua. Por favor toma en cuenta que hacemos registro de eventos ocurridos hasta 90 d\u00edas antes.\n\nEscribe la fecha que sucedi\u00f3 el evento.",
-              "type": "send_msg",
-              "quick_replies": [],
-              "uuid": "7ed1be5d-37ba-4473-a8de-b628eae71106"
-            }
-          ],
-          "exits": [
-            {
-              "uuid": "c61bb8fd-16a3-4f95-bc95-7ac096a4e2c6",
-              "destination_uuid": "7f60be61-bd1f-4ffa-a3c0-538862a53e94"
-            }
-          ]
-        },
-        {
-          "uuid": "08e099ce-4ef5-42ca-a302-cdee1a3c9c7a",
-          "actions": [
-            {
-              "attachments": [],
-              "text": "Guardar informacion de la fecha. Ir siguiente pregunta",
-              "type": "send_msg",
-              "quick_replies": [],
-              "uuid": "bb497f64-14fe-49c2-8932-37a029ed0bed"
-            }
-          ],
-          "exits": [
-            {
-              "uuid": "d3d91d05-59eb-4a6e-a863-f512cc2c689a",
+              "uuid": "94b2ad6e-8c7e-4a9d-9ee7-8976498f48f6",
               "destination_uuid": null
             }
           ]
@@ -4677,7 +6284,7 @@
         "nodes": {
           "650afd2d-f00a-43cd-89e6-0c5e5aebd028": {
             "position": {
-              "left": 580,
+              "left": 320,
               "top": 40
             },
             "type": "execute_actions"
@@ -4685,7 +6292,7 @@
           "d1fe6a59-0807-4864-ba00-482c74525f7b": {
             "type": "wait_for_response",
             "position": {
-              "left": 560,
+              "left": 680,
               "top": 240
             },
             "config": {
@@ -4694,46 +6301,46 @@
           },
           "ddb85e7c-4440-40ba-a0c4-555d3023d3ef": {
             "position": {
-              "left": 280,
-              "top": 480
+              "left": 400,
+              "top": 440
             },
             "type": "execute_actions"
           },
           "a0b07c20-fa4f-4edf-82dc-4f97f777d363": {
             "position": {
-              "left": 1020,
-              "top": 580
+              "left": 880,
+              "top": 560
             },
             "type": "execute_actions"
           },
           "46ff7dd6-a190-43f5-a550-0e9c173e9782": {
             "type": "split_by_subflow",
             "position": {
-              "left": 820,
-              "top": 900
+              "left": 840,
+              "top": 940
+            },
+            "config": {}
+          },
+          "34277ca8-3ca2-49f9-b47b-84f642f31b66": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 840,
+              "top": 1140
             },
             "config": {}
           },
           "404cc012-40b3-475f-9a6a-975d1aa500f2": {
             "position": {
-              "left": 520,
-              "top": 1060
+              "left": 560,
+              "top": 1380
             },
             "type": "execute_actions"
-          },
-          "34277ca8-3ca2-49f9-b47b-84f642f31b66": {
-            "type": "split_by_subflow",
-            "position": {
-              "left": 1100,
-              "top": 1240
-            },
-            "config": {}
           },
           "2b98aa52-dacc-4f1e-865b-3bb17bee330a": {
             "type": "wait_for_response",
             "position": {
-              "left": 660,
-              "top": 1420
+              "left": 540,
+              "top": 1600
             },
             "config": {
               "cases": {}
@@ -4742,153 +6349,559 @@
           "6d13c166-5b2d-4cab-b9d3-710ca7b131b4": {
             "type": "split_by_subflow",
             "position": {
-              "left": 1100,
-              "top": 1580
+              "left": 860,
+              "top": 1800
+            },
+            "config": {}
+          },
+          "fd5d9146-5b24-417b-8eae-c994a24bb45d": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 860,
+              "top": 1980
             },
             "config": {}
           },
           "bbb6f7a2-3d29-432e-b2ea-b1e89659c18e": {
             "position": {
-              "left": 780,
-              "top": 1800
+              "left": 860,
+              "top": 2240
             },
             "type": "execute_actions"
           },
-          "5f9d01d8-e34e-4c24-8c6a-69b3e863174e": {
-            "position": {
-              "left": 360,
-              "top": 2000
-            },
-            "type": "execute_actions"
-          },
-          "07cd4bca-6de4-4533-a136-4f8c4188ef1c": {
-            "type": "wait_for_response",
+          "0f1e056d-2b3f-43b4-8192-4b839540562a": {
             "position": {
               "left": 380,
-              "top": 2320
-            },
-            "config": {
-              "cases": {}
-            }
-          },
-          "0e440a1a-c24c-4886-918e-d9780e840b01": {
-            "position": {
-              "left": 120,
-              "top": 2520
+              "top": 2540
             },
             "type": "execute_actions"
-          },
-          "c22af384-a780-44c2-9102-6d86b113c64d": {
-            "position": {
-              "left": 560,
-              "top": 2660
-            },
-            "type": "execute_actions"
-          },
-          "2203839a-ff04-410c-957e-15192a7bc357": {
-            "type": "split_by_subflow",
-            "position": {
-              "left": 400,
-              "top": 2860
-            },
-            "config": {}
-          },
-          "d9ba4733-a75e-48bc-b9b5-ed7192f4f094": {
-            "type": "split_by_subflow",
-            "position": {
-              "left": 440,
-              "top": 3080
-            },
-            "config": {}
           },
           "d1b95522-7099-4e9f-a73d-712ab953b965": {
             "position": {
-              "left": 640,
-              "top": 3320
+              "left": 580,
+              "top": 2740
             },
             "type": "execute_actions"
           },
           "7f60be61-bd1f-4ffa-a3c0-538862a53e94": {
             "type": "wait_for_response",
             "position": {
-              "left": 560,
-              "top": 3540
+              "left": 580,
+              "top": 2960
             },
             "config": {
-              "cases": {
-                "0b5d49de-66a7-42b9-9877-190e0d4e923d": {
-                  "arguments": [
-                    "-1"
-                  ]
-                },
-                "93816e84-4c5d-4c8c-9a78-be7f5c3e3cde": {
-                  "arguments": [
-                    "-90"
-                  ]
-                }
-              }
+              "cases": {}
             }
+          },
+          "824f7698-c209-46b7-a853-13249a99421e": {
+            "position": {
+              "left": 920,
+              "top": 3100
+            },
+            "type": "execute_actions"
           },
           "62cd66aa-1325-48ca-a954-a1376a15da40": {
             "type": "split_by_subflow",
             "position": {
-              "left": 1120,
-              "top": 3760
+              "left": 880,
+              "top": 3360
             },
             "config": {}
           },
           "5efc3209-54f9-4877-b0a3-0bb57dac978c": {
             "type": "split_by_subflow",
             "position": {
-              "left": 1200,
-              "top": 3960
+              "left": 880,
+              "top": 3540
             },
             "config": {}
           },
-          "824f7698-c209-46b7-a853-13249a99421e": {
+          "25e3f7cf-f057-4a59-ba5e-e204f595c85a": {
             "position": {
-              "left": 880,
+              "left": 600,
+              "top": 3800
+            },
+            "type": "execute_actions"
+          },
+          "5f9d01d8-e34e-4c24-8c6a-69b3e863174e": {
+            "position": {
+              "left": 460,
               "top": 4080
             },
             "type": "execute_actions"
           },
-          "df223558-0bbf-4e65-8b76-df03fc9c00f9": {
+          "07cd4bca-6de4-4533-a136-4f8c4188ef1c": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 460,
+              "top": 4360
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "c22af384-a780-44c2-9102-6d86b113c64d": {
+            "position": {
+              "left": 800,
+              "top": 4540
+            },
+            "type": "execute_actions"
+          },
+          "2203839a-ff04-410c-957e-15192a7bc357": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 780,
+              "top": 4820
+            },
+            "config": {}
+          },
+          "d9ba4733-a75e-48bc-b9b5-ed7192f4f094": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 780,
+              "top": 5000
+            },
+            "config": {}
+          },
+          "b158d9f8-bc93-4c21-83a0-09b30218d268": {
+            "position": {
+              "left": 480,
+              "top": 5200
+            },
+            "type": "execute_actions"
+          },
+          "4812d2da-53d9-4d7f-98ec-4f8001dddfbe": {
+            "position": {
+              "left": 480,
+              "top": 5380
+            },
+            "type": "execute_actions"
+          },
+          "cae4369f-1e1c-46c3-af36-235d4534e758": {
+            "type": "split_by_run_result",
+            "position": {
+              "left": 480,
+              "top": 5580
+            },
+            "config": {
+              "operand": {
+                "name": "diff",
+                "id": "diff",
+                "type": "result"
+              },
+              "cases": {}
+            }
+          },
+          "90436ae5-69bd-4d5f-95f8-abc1d35072ca": {
+            "position": {
+              "left": 820,
+              "top": 5720
+            },
+            "type": "execute_actions"
+          },
+          "fc587de5-ba0e-42a9-9e18-9c41b75d6447": {
             "position": {
               "left": 320,
-              "top": 4200
+              "top": 5980
             },
             "type": "execute_actions"
           },
-          "fb9934f1-16a3-4c4e-92f4-7724977fcfa5": {
+          "4f998c5e-5c17-4c3c-9ff4-2dc3ea856ea1": {
             "position": {
-              "left": 580,
-              "top": 4460
+              "left": 820,
+              "top": 6120
             },
             "type": "execute_actions"
           },
-          "08e099ce-4ef5-42ca-a302-cdee1a3c9c7a": {
+          "cbcc0fae-209e-4aab-a3a3-c8729896c46e": {
             "position": {
-              "left": 920,
-              "top": 4740
+              "left": 600,
+              "top": 6320
+            },
+            "type": "execute_actions"
+          },
+          "35c5bca8-82a6-4e0f-a7ad-14e84aa4e0f4": {
+            "type": "wait_for_response",
+            "position": {
+              "left": 320,
+              "top": 6580
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "83ad4c9f-2000-406d-a480-81e6d7c50be2": {
+            "position": {
+              "left": 600,
+              "top": 6760
+            },
+            "type": "execute_actions"
+          },
+          "c029e6d2-5680-4be5-aa25-ac5de91836e2": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 760,
+              "top": 7020
+            },
+            "config": {}
+          },
+          "e56760c9-7e10-4b6f-bbdd-4527f866241b": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 760,
+              "top": 7220
+            },
+            "config": {}
+          },
+          "f25b1f9a-2090-4a9c-a259-e6de991a137c": {
+            "position": {
+              "left": 400,
+              "top": 7380
             },
             "type": "execute_actions"
           }
         },
         "stickies": {
-          "4b80c088-49cb-4a7e-9301-fde218a1fb02": {
+          "c03385c7-621f-4f7f-8a01-59138b3d4b35": {
             "position": {
               "left": 0,
-              "top": 40,
+              "top": 20
+            },
+            "title": "10",
+            "body": "Pregunta",
+            "color": "yellow"
+          },
+          "7ade7dda-9426-4a94-82aa-e7b806c0b741": {
+            "position": {
+              "left": 0,
+              "top": 200
+            },
+            "title": "20 Selecci\u00f3n de respuesta",
+            "body": "Se distribuye segun la selecci\u00f3n de respuesta: S\u00ed o No",
+            "color": "yellow"
+          },
+          "66495d90-6c99-468a-8a41-cdddaee0548f": {
+            "position": {
+              "left": 0,
+              "top": 400
+            },
+            "title": "30 Selecci\u00f3n de S\u00ed",
+            "body": "Se registra la fecha y hora actual / now",
+            "color": "yellow"
+          },
+          "8de8e603-5bcb-4e22-96a0-6c9df9df60ae": {
+            "position": {
+              "left": 0,
+              "top": 540,
               "right": null,
               "bottom": null
             },
-            "title": "New Note",
+            "title": "40 Escritura diferente a S\u00ed o No",
+            "body": "Siendo otra la opci\u00f3n seleccionada se envia este mensaje.",
+            "color": "yellow"
+          },
+          "de158002-f29d-4e6b-a225-1a3f25eca9ec": {
+            "position": {
+              "left": 0,
+              "top": 900
+            },
+            "title": "50",
+            "body": "Si no se tiene una respuesta despues de 5 min corre el flujo de expiraci\u00f3n.",
+            "color": "yellow"
+          },
+          "7d92ac2a-6062-4bde-b44a-1bed63c05d28": {
+            "position": {
+              "left": 0,
+              "top": 1060
+            },
+            "title": "60",
+            "body": "Si no se tiene una respuesta despu\u00e9s de otros 5 min corre el flujo Salir.",
+            "color": "yellow"
+          },
+          "a046a49c-e6ed-4fd7-ae18-ca3d977e6a66": {
+            "position": {
+              "left": 0,
+              "top": 1360,
+              "right": null,
+              "bottom": null
+            },
+            "title": "70 Selecci\u00f3n de No",
+            "body": "Sigue esta pregunta",
+            "color": "yellow"
+          },
+          "ef686f64-c040-4b63-a500-11a79121791e": {
+            "position": {
+              "left": 0,
+              "top": 1580,
+              "right": null,
+              "bottom": null
+            },
+            "title": "80 Selecci\u00f3n de respuesta",
+            "body": "Se distribuye segun la selecci\u00f3n de respuesta: Hoy u Otro d\u00eda.",
+            "color": "yellow"
+          },
+          "de05902f-eb87-41a8-8c1f-1f9e5de9f6d9": {
+            "position": {
+              "left": 0,
+              "top": 1780,
+              "right": null,
+              "bottom": null
+            },
+            "title": "90",
+            "body": "Si no se tiene una respuesta despues de 5 min corre el flujo de expiraci\u00f3n.",
+            "color": "yellow"
+          },
+          "a3865e5a-5d15-4486-9625-75b260e5eb9b": {
+            "position": {
+              "left": 0,
+              "top": 1920
+            },
+            "title": "100",
+            "body": "Si no se tiene una respuesta despu\u00e9s de otros 5 min corre el flujo Salir.",
+            "color": "yellow"
+          },
+          "a19a9f02-5a2f-436d-8d16-d70cb13770a7": {
+            "position": {
+              "left": 0,
+              "top": 2200
+            },
+            "title": "110 Escritura diferente a Hoy u Otro d\u00eda",
+            "body": "Siendo otra la opci\u00f3n seleccionada se envia este mensaje.",
+            "color": "yellow"
+          },
+          "dee95660-9d4c-4b05-ba21-07995fcdc21e": {
+            "position": {
+              "left": 0,
+              "top": 2540,
+              "right": null,
+              "bottom": null
+            },
+            "title": "120 Selecci\u00f3n de Hoy",
+            "body": "Se guarda la fecha actual con el formato de YYYY-MM-DD que es el formato que maneja el sistema.",
+            "color": "yellow"
+          },
+          "50b04c95-ce33-4f00-a5a0-5d9733180bde": {
+            "position": {
+              "left": 0,
+              "top": 2720,
+              "right": null,
+              "bottom": null
+            },
+            "title": "130 Selecci\u00f3n de Otro d\u00eda",
+            "body": "Pregunta la fecha",
+            "color": "yellow"
+          },
+          "8efeab60-6c9d-4e7a-bab2-7181760081f8": {
+            "position": {
+              "left": 0,
+              "top": 2920
+            },
+            "title": "140 Revisi\u00f3n de fecha",
+            "body": "Se revisa si el registro de escritura es una fecha",
+            "color": "yellow"
+          },
+          "ca2f1a81-05da-4e01-862a-220b3ff5b7a6": {
+            "position": {
+              "left": 0,
+              "top": 3060
+            },
+            "title": "150 Escritura diferente a una fecha",
+            "body": "Se pide corregirla",
+            "color": "yellow"
+          },
+          "a6a94cd4-6a40-4168-b09d-9dc1af00d0ba": {
+            "position": {
+              "left": 0,
+              "top": 3340
+            },
+            "title": "160",
+            "body": "Si no se tiene una respuesta despues de 5 min corre el flujo de expiraci\u00f3n.",
+            "color": "yellow"
+          },
+          "64326591-6546-4c70-98d9-bfd51b8fb99c": {
+            "position": {
+              "left": 0,
+              "top": 3520
+            },
+            "title": "170",
+            "body": "Si no se tiene una respuesta despu\u00e9s de otros 5 min corre el flujo Salir.",
+            "color": "yellow"
+          },
+          "7878634d-7f1d-4406-87db-fcd8d3cdd2cd": {
+            "position": {
+              "left": 0,
+              "top": 3800,
+              "right": null,
+              "bottom": null
+            },
+            "title": "180",
+            "body": "Se guarda la fecha escrita con el formato de YYYY-MM-DD que es el formato que maneja el sistema.",
+            "color": "yellow"
+          },
+          "9d0f7ba4-7bc6-4d33-8e5b-ca06f106b145": {
+            "position": {
+              "left": 0,
+              "top": 4040
+            },
+            "title": "190",
+            "body": "Pregunta por la hora, ya sea que el evento sucedio hoy u otro dia.",
+            "color": "yellow"
+          },
+          "92635ac7-9ec8-4785-9e93-75df0b99d9b6": {
+            "position": {
+              "left": 0,
+              "top": 4340
+            },
+            "title": "200 Revisi\u00f3n de Hora",
+            "body": "Se revisa que el dato escrito sea una hora",
+            "color": "yellow"
+          },
+          "26123f6f-64c8-4434-b2dc-8bda317dcb85": {
+            "position": {
+              "left": 0,
+              "top": 4520,
+              "right": null,
+              "bottom": null
+            },
+            "title": "210 Escritura diferente a una hora",
+            "body": "Se pide corregirla",
+            "color": "yellow"
+          },
+          "c26c048a-5d7f-4c02-bc98-d071e8835afd": {
+            "position": {
+              "left": 0,
+              "top": 4780
+            },
+            "title": "220",
+            "body": "Si no se tiene una respuesta despues de 5 min corre el flujo de expiraci\u00f3n.",
+            "color": "yellow"
+          },
+          "87350ed2-472c-4a13-a743-189ce6be256d": {
+            "position": {
+              "left": 0,
+              "top": 4960
+            },
+            "title": "230",
+            "body": "Si no se tiene una respuesta despu\u00e9s de otros 5 min corre el flujo Salir.",
+            "color": "yellow"
+          },
+          "8b76f8df-2b4b-4d57-987f-576800c17e6d": {
+            "position": {
+              "left": 0,
+              "top": 5160
+            },
+            "title": "240 Registro fechahora",
+            "body": "Teniendo una hora y fecha correctamente escrita, se los concatena para tener la variable fechahora",
+            "color": "yellow"
+          },
+          "1af7cc8c-6fad-4d47-b883-7a01af534388": {
+            "position": {
+              "left": 0,
+              "top": 5360
+            },
+            "title": "250 Revision de diferencia",
+            "body": "Se realiza un operacion de diferencia entre la fecha actual y la fecha registrada, dato que nos servir\u00e1 para evaluar la fecha.",
+            "color": "yellow"
+          },
+          "c04e15f0-57c2-451b-ad3d-60d223a7920f": {
+            "position": {
+              "left": 0,
+              "top": 5540,
+              "right": null,
+              "bottom": null
+            },
+            "title": "260 Evaluaci\u00f3n de la fecha",
+            "body": "Si se tiene un resultado positivo corresponde aun dato del futuro, si es negativo  y pasa los 90 dias (la operacion se hizo en minutos ((-1)*90*24*60)) es una fecha antigua",
+            "color": "yellow"
+          },
+          "60bcead0-0b22-467d-b1c6-c53e64b6bc1e": {
+            "position": {
+              "left": 0,
+              "top": 5760,
+              "right": null,
+              "bottom": null
+            },
+            "title": "270 Fecha correcta",
+            "body": "Si la fecha corresponde en el rango de 0 a 90 dias, se guarda la fechahora en el formato correspondiente.",
+            "color": "yellow"
+          },
+          "b095e161-3934-451a-af5c-00954628e3f8": {
+            "position": {
+              "left": 0,
+              "top": 5960
+            },
+            "title": "280 Fecha en el futuro",
             "body": "...",
-            "color": "green"
+            "color": "yellow"
+          },
+          "2db67b08-9ed1-4584-8c62-bee9f00da433": {
+            "position": {
+              "left": 0,
+              "top": 6120
+            },
+            "title": "290 Fecha pasado 90 d\u00edas",
+            "body": "...",
+            "color": "yellow"
+          },
+          "dcc6daa7-2186-4dad-8d9e-c11e1f13285d": {
+            "position": {
+              "left": 0,
+              "top": 6300,
+              "right": null,
+              "bottom": null
+            },
+            "title": "300 Petici\u00f3n de reenviar fecha",
+            "body": "...",
+            "color": "yellow"
+          },
+          "f5244892-01d7-4bdf-9b80-10bbb0d6cdbb": {
+            "position": {
+              "left": 0,
+              "top": 6560
+            },
+            "title": "310 Selecci\u00f3n de Reintentar o Terminar",
+            "body": "Si se marca Reintentar va al incio del flujo.",
+            "color": "yellow"
+          },
+          "a8da28f6-e2e1-4dee-88f9-5e8711cfc08d": {
+            "position": {
+              "left": 0,
+              "top": 6740
+            },
+            "title": "320 Selecci\u00f3n diferente a Reintentar o Terminar",
+            "body": "...",
+            "color": "yellow"
+          },
+          "16fb39b6-1c4f-4d29-b830-36666e608f82": {
+            "position": {
+              "left": 0,
+              "top": 7000
+            },
+            "title": "330",
+            "body": "Si no se tiene una respuesta despues de 5 min corre el flujo de expiraci\u00f3n.",
+            "color": "yellow"
+          },
+          "b2f0b24a-8524-4cf8-b786-141bd1da46f0": {
+            "position": {
+              "left": 0,
+              "top": 7200
+            },
+            "title": "340",
+            "body": "Si no se tiene una respuesta despu\u00e9s de otros 5 min corre el flujo Salir.",
+            "color": "yellow"
+          },
+          "8298b36c-5933-45d1-bc71-3eb4706508fa": {
+            "position": {
+              "left": 0,
+              "top": 7360
+            },
+            "title": "350 Selecci\u00f3n Terminar",
+            "body": "Se hace el registro de la fecha actual ",
+            "color": "yellow"
           }
         }
       },
-      "revision": 284,
+      "revision": 1037,
       "expire_after_minutes": 10080,
       "localization": {}
     },
@@ -5702,7 +7715,7 @@
               },
               {
                 "arguments": [
-                  "3, Santa Fe"
+                  "3, Santa Fe, SantaFe"
                 ],
                 "type": "has_any_word",
                 "uuid": "e1f8475f-46b1-4f6c-88f0-12dae7dfa652",
@@ -5798,7 +7811,7 @@
               },
               {
                 "arguments": [
-                  "15, Antonio Nari\u00f1o"
+                  "15, Antonio Nari\u00f1o, Antonio, Nari\u00f1o"
                 ],
                 "type": "has_any_word",
                 "uuid": "e491c163-9e85-4274-a7f9-5ed3014a0d25",
@@ -5806,7 +7819,7 @@
               },
               {
                 "arguments": [
-                  "16, Puente Aranda"
+                  "16, Puente Aranda, Puente"
                 ],
                 "type": "has_any_word",
                 "uuid": "7b3717d3-ea0f-422a-9a17-cf605e7e62e9",
@@ -5822,7 +7835,7 @@
               },
               {
                 "arguments": [
-                  "18, Rafael Uribe Uribe, Rafael Uribe"
+                  "18, Rafael Uribe Uribe, Rafael Uribe, Rafael, Uribe"
                 ],
                 "type": "has_any_word",
                 "uuid": "060d13aa-4b6a-4414-abcb-995c7e21734b",
@@ -5830,7 +7843,7 @@
               },
               {
                 "arguments": [
-                  "19, Ciudad Bol\u00edvar, Ciudad Bolivar"
+                  "19, Ciudad Bol\u00edvar, Ciudad Bolivar, Bolivar"
                 ],
                 "type": "has_any_word",
                 "uuid": "35a32dfa-2296-4fb5-a4d9-f79cab375ebb",
@@ -6902,11 +8915,15 @@
           "actions": [
             {
               "attachments": [],
-              "text": "\u00bfPresentas alguna de las siguientes condiciones?\n\n1. Ninguna\n2. Dificultad para moverse (Utiliza silla de ruedas, muletas, caminadores, etc.)\n3. Dificultad para moverse por cualquier otra condici\u00f3n\n4. Dificultad para o\u00edr, a\u00fan utilizando aparatos especiales\n5. Dificultad para ver, a\u00fan utilizando lentes\n6. Dificultad para hablar y/o comunicarse\n7. Otro\n8. Prefiero no decir",
+              "text": "\u00bfPresentas alguna de las siguientes condiciones?\n\n1. Ninguna\n2. Dificultad para moverse (Utiliza silla de ruedas, muletas, caminadores, etc.)\n3. Dificultad para o\u00edr, a\u00fan utilizando aparatos especiales\n4. Dificultad para ver, a\u00fan utilizando lentes\n5. Dificultad para hablar y/o comunicarse\n6. Otro\n7. Prefiero no decir",
               "type": "send_msg",
               "quick_replies": [
                 "Ninguna",
-                "Otro"
+                "Moverse",
+                "Ver",
+                "Hablar",
+                "Otro",
+                "Prefiero no decir"
               ],
               "uuid": "f5bd38f5-0770-4aef-ad1e-93a6965d1937"
             }
@@ -6935,7 +8952,7 @@
               },
               {
                 "arguments": [
-                  "2"
+                  "2,  Moverse"
                 ],
                 "type": "has_any_word",
                 "uuid": "0af24821-af6b-4f17-90a0-537238da4523",
@@ -6943,50 +8960,42 @@
               },
               {
                 "arguments": [
-                  "3"
+                  "3, O\u00edr, oir"
                 ],
                 "type": "has_any_word",
                 "uuid": "fe9fd858-383f-4685-b744-dada902e7fe6",
-                "category_uuid": "b698e5d7-23f6-488c-82cc-020b81da5da9"
-              },
-              {
-                "arguments": [
-                  "4"
-                ],
-                "type": "has_any_word",
-                "uuid": "69ea7aa1-2eb0-4c12-9ebc-74cfa69086b3",
                 "category_uuid": "936106d8-452d-4ad3-8472-7d54a83e01c5"
               },
               {
                 "arguments": [
-                  "5"
+                  "4, Ver"
                 ],
                 "type": "has_any_word",
-                "uuid": "a7cc9f29-9d81-4a3c-a466-7182b63f1c52",
+                "uuid": "69ea7aa1-2eb0-4c12-9ebc-74cfa69086b3",
                 "category_uuid": "663be74f-26df-4c1a-82b3-54c09705b637"
               },
               {
                 "arguments": [
-                  "6"
+                  "5, Hablar"
                 ],
                 "type": "has_any_word",
-                "uuid": "5506e244-b8ec-4a1d-9c42-a8a0fa4fa1bb",
+                "uuid": "a7cc9f29-9d81-4a3c-a466-7182b63f1c52",
                 "category_uuid": "65b802af-ed03-4d7f-88ed-cfa6e9a4eef3"
               },
               {
                 "arguments": [
-                  "7, otro, otra"
+                  "6, Otro"
                 ],
                 "type": "has_any_word",
-                "uuid": "e035aec0-4008-4628-9734-e55b246e4b0e",
+                "uuid": "5506e244-b8ec-4a1d-9c42-a8a0fa4fa1bb",
                 "category_uuid": "93994279-cac9-4ed3-8c76-f049151b323f"
               },
               {
                 "arguments": [
-                  "9"
+                  "7, Prefiero no decir"
                 ],
                 "type": "has_any_word",
-                "uuid": "294907ef-82fd-486a-b9f0-833843785f55",
+                "uuid": "e035aec0-4008-4628-9734-e55b246e4b0e",
                 "category_uuid": "be10210f-6e05-4f07-b4fe-f77724843794"
               }
             ],
@@ -7000,11 +9009,6 @@
                 "uuid": "dd4e325d-de80-42f8-b3e5-f20daa7bc37d",
                 "name": "Dificultad para moverse ",
                 "exit_uuid": "f562ecca-57bc-4255-840a-9d180d2ebc3f"
-              },
-              {
-                "uuid": "b698e5d7-23f6-488c-82cc-020b81da5da9",
-                "name": "Otra condici\u00f3n moverse",
-                "exit_uuid": "22b34233-7d11-48df-9a8e-15f0f4cfedc0"
               },
               {
                 "uuid": "936106d8-452d-4ad3-8472-7d54a83e01c5",
@@ -7059,10 +9063,6 @@
             },
             {
               "uuid": "f562ecca-57bc-4255-840a-9d180d2ebc3f",
-              "destination_uuid": "b12f2977-479f-43ce-9a61-962948a65b75"
-            },
-            {
-              "uuid": "22b34233-7d11-48df-9a8e-15f0f4cfedc0",
               "destination_uuid": "b12f2977-479f-43ce-9a61-962948a65b75"
             },
             {
@@ -8057,13 +10057,6 @@
             },
             "type": "execute_actions"
           },
-          "82abf406-b766-4cb7-ac28-6dd8049b1805": {
-            "position": {
-              "left": 660,
-              "top": 940
-            },
-            "type": "execute_actions"
-          },
           "b2f0529e-2faa-40d5-95e5-1fa051781e7b": {
             "type": "wait_for_response",
             "position": {
@@ -8077,7 +10070,7 @@
           "12f38565-93eb-4e0f-8226-36cf8c5e02a2": {
             "type": "split_by_subflow",
             "position": {
-              "left": 960,
+              "left": 1000,
               "top": 520
             },
             "config": {}
@@ -8085,10 +10078,17 @@
           "abaf46a7-b300-4545-89cf-aa8877452e5a": {
             "type": "split_by_subflow",
             "position": {
-              "left": 840,
+              "left": 1020,
               "top": 720
             },
             "config": {}
+          },
+          "82abf406-b766-4cb7-ac28-6dd8049b1805": {
+            "position": {
+              "left": 660,
+              "top": 940
+            },
+            "type": "execute_actions"
           },
           "015a2eb0-2a11-413c-917d-ae5a4c5ed739": {
             "position": {
@@ -8118,14 +10118,14 @@
           "59f46584-136c-439e-986e-988d755ee018": {
             "type": "split_by_subflow",
             "position": {
-              "left": 760,
+              "left": 920,
               "top": 1740
             },
             "config": {}
           },
           "016c7f28-6603-4096-a1ed-b80f90f28cf3": {
             "position": {
-              "left": 680,
+              "left": 740,
               "top": 1980
             },
             "type": "execute_actions"
@@ -8158,7 +10158,7 @@
           "d9231e86-29b0-46dc-9637-290e839f8d78": {
             "type": "split_by_subflow",
             "position": {
-              "left": 1260,
+              "left": 1360,
               "top": 3040
             },
             "config": {}
@@ -8198,8 +10198,8 @@
           "3d95e334-f15e-46d7-99d5-c5417bcf22fa": {
             "type": "split_by_subflow",
             "position": {
-              "left": 2340,
-              "top": 4500
+              "left": 2520,
+              "top": 4520
             },
             "config": {}
           },
@@ -8238,8 +10238,8 @@
           "81e69894-7c05-4c25-9ad1-d4c93aa79d13": {
             "type": "split_by_subflow",
             "position": {
-              "left": 1200,
-              "top": 5860
+              "left": 1340,
+              "top": 5880
             },
             "config": {}
           },
@@ -8278,8 +10278,8 @@
           "c78c4d34-415c-4c65-8e0d-ce4bec21e871": {
             "type": "split_by_subflow",
             "position": {
-              "left": 1080,
-              "top": 7120
+              "left": 1260,
+              "top": 7140
             },
             "config": {}
           },
@@ -8318,15 +10318,15 @@
           "69e708d2-9535-462f-b01c-e752641d2ada": {
             "type": "split_by_subflow",
             "position": {
-              "left": 1460,
+              "left": 1620,
               "top": 8860
             },
             "config": {}
           },
           "daa4b8de-425f-41c0-9966-fc82cc3bd4bb": {
             "position": {
-              "left": 1260,
-              "top": 9060
+              "left": 1300,
+              "top": 8920
             },
             "type": "execute_actions"
           },
@@ -8334,13 +10334,6 @@
             "position": {
               "left": 820,
               "top": 9560
-            },
-            "type": "execute_actions"
-          },
-          "1a9394be-febf-483a-aa35-962253aac14c": {
-            "position": {
-              "left": 1120,
-              "top": 10860
             },
             "type": "execute_actions"
           },
@@ -8365,10 +10358,17 @@
           "9b783224-7915-4361-9ba9-e2a0fb0b198a": {
             "type": "split_by_subflow",
             "position": {
-              "left": 1280,
-              "top": 10520
+              "left": 1500,
+              "top": 10540
             },
             "config": {}
+          },
+          "1a9394be-febf-483a-aa35-962253aac14c": {
+            "position": {
+              "left": 1120,
+              "top": 10860
+            },
+            "type": "execute_actions"
           },
           "a8a8fc04-9468-4c0c-9315-a4a0a6ad08e8": {
             "position": {
@@ -8387,20 +10387,28 @@
               "cases": {}
             }
           },
+          "06947615-10a8-4104-8b9a-fba4cdfe6f43": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 1120,
+              "top": 11720
+            },
+            "config": {}
+          },
+          "4fb5cdcb-0c14-4d47-a501-244a8c5d86a6": {
+            "type": "split_by_subflow",
+            "position": {
+              "left": 1160,
+              "top": 11940
+            },
+            "config": {}
+          },
           "4386638e-9411-46b3-84c4-6bf90ad15b14": {
             "position": {
               "left": 800,
               "top": 12120
             },
             "type": "execute_actions"
-          },
-          "4fb5cdcb-0c14-4d47-a501-244a8c5d86a6": {
-            "type": "split_by_subflow",
-            "position": {
-              "left": 1040,
-              "top": 11920
-            },
-            "config": {}
           },
           "9619abc1-487f-4ced-9efb-048ec1214723": {
             "type": "split_by_subflow",
@@ -8444,14 +10452,6 @@
             "position": {
               "left": 240,
               "top": 13700
-            },
-            "config": {}
-          },
-          "06947615-10a8-4104-8b9a-fba4cdfe6f43": {
-            "type": "split_by_subflow",
-            "position": {
-              "left": 1120,
-              "top": 11720
             },
             "config": {}
           }
@@ -8987,7 +10987,7 @@
           }
         }
       },
-      "revision": 2783,
+      "revision": 2804,
       "expire_after_minutes": 10080,
       "localization": {}
     },
@@ -9377,7 +11377,7 @@
             },
             {
               "uuid": "d54497ea-a739-4852-9029-177bfdf5d592",
-              "destination_uuid": "2a72c482-63cf-4e5b-a58e-2d84d6d74040"
+              "destination_uuid": "b271b288-2073-46d2-975c-d1334ef2d8a4"
             },
             {
               "uuid": "2baafcfb-f127-449d-a2a7-a6cf2d5c7f3f",
@@ -9453,7 +11453,7 @@
             },
             {
               "uuid": "3aa35c77-af84-4349-9c60-c61ce5f9a83a",
-              "destination_uuid": null
+              "destination_uuid": "7fe4642f-6ace-45cc-8345-4499ed91f064"
             }
           ]
         },
@@ -9476,97 +11476,43 @@
           ]
         },
         {
-          "uuid": "bda6ee3f-6179-48ef-8aeb-a1b7f04308de",
+          "uuid": "7fe4642f-6ace-45cc-8345-4499ed91f064",
           "actions": [
             {
-              "attachments": [],
-              "text": "Hola, \u00bfsigues ah\u00ed? \n\nPor favor selecciona Continuar para reintentar responder la pregunta o Terminar para terminar la conversaci\u00f3n.",
-              "type": "send_msg",
-              "quick_replies": [
-                "Continuar ",
-                "Terminar "
+              "addresses": [
+                "luzchoquej@gmail.com"
               ],
-              "uuid": "2e28e128-1eee-42a1-a14f-5d76a216cc21"
+              "subject": "Error en el Flujo de TUMI CAF",
+              "body": "Hemos encontrado un problema en el flujo de Tum CAF \n\nLa salida del webhook que produjo la falla fue esta: \n\n@legacy_extra\n\nAlgunos otros datos del problema se pueden ver aqui: \n\nContacto:@contact \nURN:@urns\nFields:@fields\nWebhook:@legacy_extra\nResults:@results\nInput:@input\nRun:@run",
+              "type": "send_email",
+              "uuid": "f4785b46-cf94-43de-bd50-84621cbcce09"
             }
           ],
           "exits": [
             {
-              "uuid": "e5353ea9-8cb8-4aa4-8736-34756037ec3e",
-              "destination_uuid": "b704696a-7195-41cc-bf42-1ead637633b3"
+              "uuid": "4238369d-8608-4e87-b26e-bbee2ceb5d36",
+              "destination_uuid": "68eb56d2-e198-41a7-be04-faea75f22180"
             }
           ]
         },
         {
-          "uuid": "b704696a-7195-41cc-bf42-1ead637633b3",
-          "actions": [],
-          "router": {
-            "type": "switch",
-            "default_category_uuid": "57c06899-d185-47bc-970a-b2e6a0481fc0",
-            "cases": [
-              {
-                "arguments": [
-                  "Continuar"
-                ],
-                "type": "has_any_word",
-                "uuid": "3b083977-8bf5-4a6c-8947-5789da2fcb94",
-                "category_uuid": "e193a4b5-ca0d-4ca4-8706-973d06eb314c"
-              },
-              {
-                "arguments": [
-                  "Terminar"
-                ],
-                "type": "has_any_word",
-                "uuid": "5e97a0e1-680d-45b5-88c4-22ced1f95bef",
-                "category_uuid": "32b1cae3-9172-47b8-ab68-167e1c2c7095"
-              }
-            ],
-            "categories": [
-              {
-                "uuid": "e193a4b5-ca0d-4ca4-8706-973d06eb314c",
-                "name": "Continuar",
-                "exit_uuid": "8401b3ee-6b65-4aba-9ba6-6c604b602a4e"
-              },
-              {
-                "uuid": "32b1cae3-9172-47b8-ab68-167e1c2c7095",
-                "name": "Terminar",
-                "exit_uuid": "3708b89e-dd6e-41b4-a8c4-be28abd23bf2"
-              },
-              {
-                "uuid": "57c06899-d185-47bc-970a-b2e6a0481fc0",
-                "name": "Other",
-                "exit_uuid": "304572a7-0446-4d1a-aa5b-a2ea67be760d"
-              },
-              {
-                "uuid": "5fe6ef6d-30bb-4841-aa55-d0ed26f68f40",
-                "name": "No Response",
-                "exit_uuid": "63d14ce3-d685-41f5-bc8b-5a368f1f25b4"
-              }
-            ],
-            "operand": "@input.text",
-            "wait": {
-              "type": "msg",
-              "timeout": {
-                "seconds": 60,
-                "category_uuid": "5fe6ef6d-30bb-4841-aa55-d0ed26f68f40"
-              }
+          "uuid": "68eb56d2-e198-41a7-be04-faea75f22180",
+          "actions": [
+            {
+              "attachments": [
+                "video:https://dl-textit.s3.amazonaws.com/orgs/17968/media/56ad/56aded4f-932c-4ec7-9d6c-ddb2e838b1e9/monkey-look-the-other-way.mp4"
+              ],
+              "text": "Lo sentimos, en este momento estamos experimentando dificultades t\u00e9cnicas al realizar consultas en nuestra base de datos. \n\nEste problema ya ha sido reportado a nuestro equipo de desarrollo y estamos trabajando para solucionarlo lo antes posible. \n\nAgradecemos tu paciencia y comprensi\u00f3n, y nos disculpamos por cualquier inconveniente que esto pueda causar. ",
+              "type": "send_msg",
+              "all_urns": false,
+              "quick_replies": [],
+              "uuid": "2087f7da-291d-4856-84a3-d293f9ffdee8"
             }
-          },
+          ],
           "exits": [
             {
-              "uuid": "8401b3ee-6b65-4aba-9ba6-6c604b602a4e",
-              "destination_uuid": "ffe9f61e-3322-470c-981d-a738bd2003bd"
-            },
-            {
-              "uuid": "3708b89e-dd6e-41b4-a8c4-be28abd23bf2",
-              "destination_uuid": "b18d4acb-ff68-4b45-a8b8-9a2a1e484493"
-            },
-            {
-              "uuid": "304572a7-0446-4d1a-aa5b-a2ea67be760d",
-              "destination_uuid": "ea58432a-2d3f-4139-8cee-e874be41547c"
-            },
-            {
-              "uuid": "63d14ce3-d685-41f5-bc8b-5a368f1f25b4",
-              "destination_uuid": "b18d4acb-ff68-4b45-a8b8-9a2a1e484493"
+              "uuid": "e149cbd2-7892-472a-802c-ffa8ee30dd2e",
+              "destination_uuid": null
             }
           ]
         },
@@ -9589,85 +11535,6 @@
           ]
         },
         {
-          "uuid": "ea58432a-2d3f-4139-8cee-e874be41547c",
-          "actions": [
-            {
-              "attachments": [],
-              "text": "Lo siento, no entend\u00ed  tu respuesta. \n\nPor favor selecciona Continuar para reintentar responder la pregunta o Terminar para terminar la conversaci\u00f3n.",
-              "type": "send_msg",
-              "quick_replies": [
-                "Continuar ",
-                "Terminar "
-              ],
-              "uuid": "d6edc723-d6f4-4ac4-b1c6-d207edab6465"
-            }
-          ],
-          "exits": [
-            {
-              "uuid": "0799f9da-b205-4f14-8f9d-d66a65681dd9",
-              "destination_uuid": "b704696a-7195-41cc-bf42-1ead637633b3"
-            }
-          ]
-        },
-        {
-          "uuid": "b18d4acb-ff68-4b45-a8b8-9a2a1e484493",
-          "actions": [
-            {
-              "uuid": "12494c7f-a1a1-443e-87ae-5efa06ffa5ae",
-              "type": "enter_flow",
-              "flow": {
-                "uuid": "9e6f3c1a-79dd-4b53-9dfb-9d905b022361",
-                "name": "Salir"
-              }
-            }
-          ],
-          "router": {
-            "type": "switch",
-            "operand": "@child.status",
-            "cases": [
-              {
-                "uuid": "a008fc7c-a085-457e-9e15-4b16d3534fa8",
-                "type": "has_only_text",
-                "arguments": [
-                  "completed"
-                ],
-                "category_uuid": "fb1b5316-168c-4026-a781-3f186728887d"
-              },
-              {
-                "uuid": "24642c0b-fa1f-4ed4-bc34-87fd8d93e7bb",
-                "arguments": [
-                  "expired"
-                ],
-                "type": "has_only_text",
-                "category_uuid": "84e298f4-6f14-490e-8f7d-78c317226387"
-              }
-            ],
-            "categories": [
-              {
-                "uuid": "fb1b5316-168c-4026-a781-3f186728887d",
-                "name": "Complete",
-                "exit_uuid": "63fafd29-195c-450e-b9b0-be49001391a4"
-              },
-              {
-                "uuid": "84e298f4-6f14-490e-8f7d-78c317226387",
-                "name": "Expired",
-                "exit_uuid": "bac73d3f-b439-4b3f-acab-9c1a4de9ed67"
-              }
-            ],
-            "default_category_uuid": "84e298f4-6f14-490e-8f7d-78c317226387"
-          },
-          "exits": [
-            {
-              "uuid": "63fafd29-195c-450e-b9b0-be49001391a4",
-              "destination_uuid": null
-            },
-            {
-              "uuid": "bac73d3f-b439-4b3f-acab-9c1a4de9ed67",
-              "destination_uuid": null
-            }
-          ]
-        },
-        {
           "uuid": "46932dd1-2b58-4734-80f8-e42208da5ec2",
           "actions": [
             {
@@ -9686,7 +11553,7 @@
           ]
         },
         {
-          "uuid": "2a72c482-63cf-4e5b-a58e-2d84d6d74040",
+          "uuid": "b271b288-2073-46d2-975c-d1334ef2d8a4",
           "actions": [
             {
               "type": "set_run_result",
@@ -9715,12 +11582,205 @@
               "value": "@(webhook.records[results.j-1].fields.pregunta)",
               "category": "",
               "uuid": "aca9e3d8-efe2-40af-a99a-dbfe36c86dfe"
+            },
+            {
+              "type": "set_run_result",
+              "name": "tiemponoimporta",
+              "value": "@(false = is_error(webhook.records[results.j-1].fields.tiemponoimporta))",
+              "category": "",
+              "uuid": "3c79fca4-6214-4b6d-9a88-22976e4f88f1"
             }
           ],
           "exits": [
             {
-              "uuid": "54b6af38-3200-44ab-aebc-6cc5ef807254",
+              "uuid": "ad790147-4133-4a12-865a-383b3ba4b849",
+              "destination_uuid": "2f53d6bd-702b-448f-8653-2a39c8f8ba20"
+            }
+          ]
+        },
+        {
+          "uuid": "2f53d6bd-702b-448f-8653-2a39c8f8ba20",
+          "actions": [],
+          "router": {
+            "type": "switch",
+            "default_category_uuid": "970b2ead-08d5-4cb6-a0de-d79a569d9190",
+            "categories": [
+              {
+                "uuid": "814afe35-8409-4d7a-bb97-b1213ddf0df4",
+                "name": "Sin actor",
+                "exit_uuid": "cb2b6643-1808-4b48-9c53-34636c21fe44"
+              },
+              {
+                "uuid": "970b2ead-08d5-4cb6-a0de-d79a569d9190",
+                "name": "Other",
+                "exit_uuid": "39e0e2b1-735a-453c-b1a0-218a33d2e764"
+              }
+            ],
+            "cases": [
+              {
+                "arguments": [
+                  "true"
+                ],
+                "type": "has_any_word",
+                "uuid": "c244ff63-6031-4e2b-8c0b-2fd7cf9ea657",
+                "category_uuid": "814afe35-8409-4d7a-bb97-b1213ddf0df4"
+              }
+            ],
+            "operand": "@(and(  is_error(webhook.records[results.j-1].fields.pregunta_involucrados)    ,   is_error(webhook.records[results.j-1].fields.pregunta_victima)  ) )"
+          },
+          "exits": [
+            {
+              "uuid": "cb2b6643-1808-4b48-9c53-34636c21fe44",
               "destination_uuid": "5c167e16-ab36-43af-aed7-0f16537a91f4"
+            },
+            {
+              "uuid": "39e0e2b1-735a-453c-b1a0-218a33d2e764",
+              "destination_uuid": "4b4899fb-63c8-4422-8aa6-2bcdf1a4eb8b"
+            }
+          ]
+        },
+        {
+          "uuid": "4b4899fb-63c8-4422-8aa6-2bcdf1a4eb8b",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "pregunta_involucrados",
+              "value": "@(webhook.records[results.j-1].fields.pregunta_involucrados)",
+              "category": "",
+              "uuid": "4a5bd5cd-131f-4acc-a7ec-37640e7a48c2"
+            },
+            {
+              "type": "set_run_result",
+              "name": "pregunta_victima",
+              "value": "@(webhook.records[results.j-1].fields.pregunta_victima)",
+              "category": "",
+              "uuid": "b259c362-1b95-4f6f-98f1-de942886cbbb"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "20bf24d1-474e-455d-9f47-0cf7e4561a27",
+              "destination_uuid": "e4fe521d-3439-4f12-bcb4-be6c1918f160"
+            }
+          ]
+        },
+        {
+          "uuid": "e4fe521d-3439-4f12-bcb4-be6c1918f160",
+          "actions": [
+            {
+              "uuid": "eda79a95-4e9d-403c-b8b7-c2493f0727c6",
+              "headers": {
+                "Accept": "application/json",
+                "Authorization": "@globals.apikey"
+              },
+              "type": "call_webhook",
+              "url": "https://api.airtable.com/v0/appuJ7N7aZFvOLBrD/Actores_viales?sort%5B0%5D%5Bfield%5D=id_actor&sort%5B0%5D%5Bdirection%5D=asc",
+              "body": "",
+              "method": "GET",
+              "result_name": "Result"
+            }
+          ],
+          "router": {
+            "type": "switch",
+            "operand": "@results.result.category",
+            "cases": [
+              {
+                "uuid": "d88d2713-11ce-4f4a-a104-086b616328a8",
+                "type": "has_only_text",
+                "arguments": [
+                  "Success"
+                ],
+                "category_uuid": "6782941c-05a9-4258-9a1b-bd5b8b39c225"
+              }
+            ],
+            "categories": [
+              {
+                "uuid": "6782941c-05a9-4258-9a1b-bd5b8b39c225",
+                "name": "Success",
+                "exit_uuid": "5b06e303-fd82-4b6e-99f1-27fd8a89c613"
+              },
+              {
+                "uuid": "0cad0347-56a8-4387-bbf9-53779fa3162e",
+                "name": "Failure",
+                "exit_uuid": "73c10fc7-ccde-444f-8daf-aea9112d493d"
+              }
+            ],
+            "default_category_uuid": "0cad0347-56a8-4387-bbf9-53779fa3162e"
+          },
+          "exits": [
+            {
+              "uuid": "5b06e303-fd82-4b6e-99f1-27fd8a89c613",
+              "destination_uuid": "175415fe-d8db-412d-92bd-233ac222e517"
+            },
+            {
+              "uuid": "73c10fc7-ccde-444f-8daf-aea9112d493d",
+              "destination_uuid": "45238d8b-9598-4967-a586-ee299db1d52d"
+            }
+          ]
+        },
+        {
+          "uuid": "175415fe-d8db-412d-92bd-233ac222e517",
+          "actions": [
+            {
+              "type": "set_run_result",
+              "name": "listado_actores",
+              "value": "@(join(foreach(webhook.records, (x) => x.fields.id_actor &\" - \"& x.fields.nombre),char(10)))",
+              "category": "",
+              "uuid": "fc322587-70d8-4cb2-99ab-419460b086f4"
+            },
+            {
+              "type": "set_run_result",
+              "name": "count_actores",
+              "value": "@(count(foreach(webhook.records, (x) => x.fields.id_actor )))",
+              "category": "",
+              "uuid": "f1c7f5cc-3ecd-4fb5-ba97-2fd5cc35c896"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "b151625a-31aa-4058-9145-4f26a08789dd",
+              "destination_uuid": "5c167e16-ab36-43af-aed7-0f16537a91f4"
+            }
+          ]
+        },
+        {
+          "uuid": "45238d8b-9598-4967-a586-ee299db1d52d",
+          "actions": [
+            {
+              "addresses": [
+                "luzchoquej@gmail.com"
+              ],
+              "subject": "Error en el Flujo de TUMI CAF",
+              "body": "Hemos encontrado un problema en el flujo de Tum CAF\n\nLa salida del webhook que produjo la falla fue esta:\n\n@legacy_extra\n\nAlgunos otros datos del problema se pueden ver aqui:\n\nContacto:@contact\nURN:@urns\nFields:@fields\nWebhook:@legacy_extra\nResults:@results\nInput:@input\nRun:@run",
+              "type": "send_email",
+              "uuid": "d80ebf1e-54e0-4f41-84b6-75d846eaea8f"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "94021e3c-0024-4c35-93d5-72a8944eedd9",
+              "destination_uuid": "8d47cb54-732b-4606-b2bf-3f2dbaf54c62"
+            }
+          ]
+        },
+        {
+          "uuid": "8d47cb54-732b-4606-b2bf-3f2dbaf54c62",
+          "actions": [
+            {
+              "attachments": [
+                "video:https://dl-textit.s3.amazonaws.com/orgs/17968/media/c0e6/c0e628ab-6a32-43c0-ae83-1b23d7cd9f7e/monkey-look-the-other-way.mp4"
+              ],
+              "text": "Lo sentimos, en este momento estamos experimentando dificultades t\u00e9cnicas al realizar consultas en nuestra base de datos. \n\nEste problema ya ha sido reportado a nuestro equipo de desarrollo y estamos trabajando para solucionarlo lo antes posible. \n\nAgradecemos tu paciencia y comprensi\u00f3n, y nos disculpamos por cualquier inconveniente que esto pueda causar. ",
+              "type": "send_msg",
+              "all_urns": false,
+              "quick_replies": [],
+              "uuid": "1e9cd2e8-6d61-4bd7-a5d2-9f64e237314e"
+            }
+          ],
+          "exits": [
+            {
+              "uuid": "fc0027d5-7bcc-4956-a8e8-ff2b58acdb7c",
+              "destination_uuid": null
             }
           ]
         }
@@ -9814,15 +11874,15 @@
           "ffe9f61e-3322-470c-981d-a738bd2003bd": {
             "position": {
               "left": 580,
-              "top": 2740
+              "top": 2680
             },
             "type": "execute_actions"
           },
           "e7c83f08-00a6-445a-8e6d-70421613afc4": {
             "type": "wait_for_response",
             "position": {
-              "left": 560,
-              "top": 2960
+              "left": 600,
+              "top": 2940
             },
             "config": {
               "cases": {}
@@ -9831,7 +11891,7 @@
           "b4e29f86-8763-461b-a4eb-b2d320c3fd82": {
             "position": {
               "left": 1020,
-              "top": 3160
+              "top": 3140
             },
             "type": "execute_actions"
           },
@@ -9839,55 +11899,23 @@
             "type": "split_by_webhook",
             "position": {
               "left": 1020,
-              "top": 3380
+              "top": 3320
             },
             "config": {}
           },
           "aa75c12a-225b-4888-947b-ee0d70d0e4a2": {
             "position": {
-              "left": 1020,
-              "top": 3640
+              "left": 960,
+              "top": 3540
             },
             "type": "execute_actions"
-          },
-          "bda6ee3f-6179-48ef-8aeb-a1b7f04308de": {
-            "position": {
-              "left": 1520,
-              "top": 3820
-            },
-            "type": "execute_actions"
-          },
-          "b704696a-7195-41cc-bf42-1ead637633b3": {
-            "type": "wait_for_response",
-            "position": {
-              "left": 1460,
-              "top": 4040
-            },
-            "config": {
-              "cases": {}
-            }
           },
           "74802fad-e20b-4e6c-b889-440aae3321ec": {
             "position": {
               "left": 800,
-              "top": 4140
+              "top": 4200
             },
             "type": "execute_actions"
-          },
-          "ea58432a-2d3f-4139-8cee-e874be41547c": {
-            "position": {
-              "left": 1940,
-              "top": 4160
-            },
-            "type": "execute_actions"
-          },
-          "b18d4acb-ff68-4b45-a8b8-9a2a1e484493": {
-            "type": "split_by_subflow",
-            "position": {
-              "left": 1560,
-              "top": 4340
-            },
-            "config": {}
           },
           "46932dd1-2b58-4734-80f8-e42208da5ec2": {
             "position": {
@@ -9896,10 +11924,69 @@
             },
             "type": "execute_actions"
           },
-          "2a72c482-63cf-4e5b-a58e-2d84d6d74040": {
+          "b271b288-2073-46d2-975c-d1334ef2d8a4": {
             "position": {
               "left": 520,
               "top": 4920
+            }
+          },
+          "2f53d6bd-702b-448f-8653-2a39c8f8ba20": {
+            "type": "split_by_expression",
+            "position": {
+              "left": 520,
+              "top": 5580
+            },
+            "config": {
+              "cases": {}
+            }
+          },
+          "4b4899fb-63c8-4422-8aa6-2bcdf1a4eb8b": {
+            "position": {
+              "left": 520,
+              "top": 5800
+            },
+            "type": "execute_actions"
+          },
+          "e4fe521d-3439-4f12-bcb4-be6c1918f160": {
+            "type": "split_by_webhook",
+            "position": {
+              "left": 520,
+              "top": 6140
+            },
+            "config": {}
+          },
+          "175415fe-d8db-412d-92bd-233ac222e517": {
+            "position": {
+              "left": 280,
+              "top": 6440
+            },
+            "type": "execute_actions"
+          },
+          "45238d8b-9598-4967-a586-ee299db1d52d": {
+            "position": {
+              "left": 700,
+              "top": 6780
+            },
+            "type": "execute_actions"
+          },
+          "8d47cb54-732b-4606-b2bf-3f2dbaf54c62": {
+            "position": {
+              "left": 720,
+              "top": 6940
+            },
+            "type": "execute_actions"
+          },
+          "7fe4642f-6ace-45cc-8345-4499ed91f064": {
+            "position": {
+              "left": 1160,
+              "top": 3700
+            },
+            "type": "execute_actions"
+          },
+          "68eb56d2-e198-41a7-be04-faea75f22180": {
+            "position": {
+              "left": 1160,
+              "top": 3800
             },
             "type": "execute_actions"
           }
@@ -10120,10 +12207,48 @@
             "title": "62",
             "body": "...",
             "color": "yellow"
+          },
+          "71022db6-8940-41ac-b39e-e3136c2d690f": {
+            "position": {
+              "left": 0,
+              "top": 5580
+            },
+            "title": "170",
+            "body": "...",
+            "color": "yellow"
+          },
+          "1f9e64f6-6132-47d4-9536-657714e0208c": {
+            "position": {
+              "left": 20,
+              "top": 5820
+            },
+            "title": "180",
+            "body": "...",
+            "color": "yellow"
+          },
+          "672881bf-f7f0-4e68-bb3a-3df0dc31cf46": {
+            "position": {
+              "left": 0,
+              "top": 6120
+            },
+            "title": "190",
+            "body": "...",
+            "color": "yellow"
+          },
+          "d169fe2e-0dc1-4c75-ad64-c96941d0c9c4": {
+            "position": {
+              "left": 20,
+              "top": 6440,
+              "right": null,
+              "bottom": null
+            },
+            "title": "200",
+            "body": "...",
+            "color": "yellow"
           }
         }
       },
-      "revision": 743,
+      "revision": 917,
       "expire_after_minutes": 5,
       "localization": {}
     }
@@ -10139,6 +12264,50 @@
       "groups": [],
       "exclude_groups": [],
       "keyword": "salirbot",
+      "match_type": "F"
+    },
+    {
+      "trigger_type": "K",
+      "flow": {
+        "uuid": "9e6f3c1a-79dd-4b53-9dfb-9d905b022361",
+        "name": "Salir"
+      },
+      "groups": [],
+      "exclude_groups": [],
+      "keyword": "terminar",
+      "match_type": "F"
+    },
+    {
+      "trigger_type": "K",
+      "flow": {
+        "uuid": "9e6f3c1a-79dd-4b53-9dfb-9d905b022361",
+        "name": "Salir"
+      },
+      "groups": [],
+      "exclude_groups": [],
+      "keyword": "adios",
+      "match_type": "F"
+    },
+    {
+      "trigger_type": "K",
+      "flow": {
+        "uuid": "9e6f3c1a-79dd-4b53-9dfb-9d905b022361",
+        "name": "Salir"
+      },
+      "groups": [],
+      "exclude_groups": [],
+      "keyword": "stop",
+      "match_type": "F"
+    },
+    {
+      "trigger_type": "K",
+      "flow": {
+        "uuid": "9e6f3c1a-79dd-4b53-9dfb-9d905b022361",
+        "name": "Salir"
+      },
+      "groups": [],
+      "exclude_groups": [],
+      "keyword": "chao",
       "match_type": "F"
     },
     {
