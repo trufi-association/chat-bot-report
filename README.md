@@ -62,7 +62,8 @@ Si aún no tienes una cuenta en Airtable, sigue estos pasos para crear una:
 
 Haz clic en el siguiente enlace para acceder al template de la base de datos Airtable que se utilizará en este proyecto:
 
-[Template de Airtable](https://airtable.com/shrPOBl3obHbRe4i5)
+[Template de Airtable](https://airtable.com/shr0gTgjjsIFuGI0w)
+
 
 ## Paso 3: Copiar el template a tu cuenta de Airtable
 
