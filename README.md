@@ -127,23 +127,23 @@ Para utilizar el canal de WhatsApp a través de 360dialog, es necesario crear un
 
 **Nota:** El proceso de revisión y verificación de la información de tu empresa por parte de Facebook puede llevar tiempo. Por lo tanto, es importante comenzar este proceso con suficiente anticipación para evitar retrasos en la implementación de tu proyecto.
 
-# Árbol de Categorías
 
-Este documento explica la estructura y funcionamiento del árbol de categorías utilizado por nuestro chatbot. El árbol de categorías está diseñado para ser altamente versátil y adaptable a diferentes ciudades y regiones.
 
 ## Estructura del Árbol de Categorías
 
 El árbol de categorías se encuentra en una tabla de Airtable. Los campos clave de la tabla son:
 
-- **ID**: El identificador único de cada categoría.
-- **ID_categoria_padre**: Enlace a la misma tabla, indica el ID de la categoría padre para establecer la relación jerárquica.
-- **Categoria**: Nombre de la categoría.
-- **Coloquial**: Nombre alternativo de la categoría en el idioma local de la región donde se utiliza.
-- **Pregunta**: Texto de la pregunta relacionada con cada categoría.
+- ID: El identificador único de cada categoría.
+- ID_categoria_padre: Enlace a la misma tabla, indica el ID de la categoría padre para establecer la relación jerárquica.
+- Categoria: Nombre de la categoría.
+- Coloquial: Nombre alternativo de la categoría en el idioma local de la región donde se utiliza.
+- Pregunta: Texto de la pregunta relacionada con cada categoría.
+- pregunta_victima: Texto de la pregunta relacionada con las víctimas en categorías específicas.
+- pregunta_involucrado: Texto de la pregunta relacionada con los involucrados en categorías específicas.
 
 ### Navegación y Jerarquía
 
-Las categorías base no tienen un ID de padres y se deja por defecto el valor cero. La jerarquía y navegación se establecen mediante la relación entre los campos **ID** y **ID_categoria_padre**. El chatbot utiliza esta información para crear e interactuar automáticamente con las categorías.
+Las categorías base no tienen un ID de padres y se deja por defecto el valor cero. La jerarquía y navegación se establecen mediante la relación entre los campos ID y ID_categoria_padre. El chatbot utiliza esta información para crear e interactuar automáticamente con las categorías.
 
 ### Importancia de la Configuración Correcta
 
@@ -151,11 +151,40 @@ Es crucial asegurarse de que las categorías, nombres y relaciones padre-hijo es
 
 ### Uso de la Información Coloquial
 
-El campo **Coloquial** contiene información sobre cómo se escribe la categoría en el idioma local de la región. Si no se proporciona un nombre coloquial, el chatbot utilizará el valor del campo **Categoria** tal cual.
+El campo Coloquial contiene información sobre cómo se escribe la categoría en el idioma local de la región. Si no se proporciona un nombre coloquial, el chatbot utilizará el valor del campo Categoria tal cual.
 
 ### Preguntas Personalizadas por Categoría
 
-El campo **Pregunta** contiene el texto de la pregunta relacionada con cada categoría. Esto permite personalizar la pregunta en función de la categoría, ya sea una propuesta, un reclamo, una sugerencia o una felicitación.
+El campo Pregunta contiene el texto de la pregunta relacionada con cada categoría. Esto permite personalizar la pregunta en función de la categoría, ya sea una propuesta, un reclamo, una sugerencia o una felicitación.
+
+### Actores Viales
+
+Además, se ha agregado una tabla llamada "actores viales" para almacenar información sobre las víctimas y los involucrados en cada categoría específica. Los campos de esta tabla son:
+
+1. Peatón
+2. Pasajero
+3. Conductor automóvil
+4. Conductor taxi
+5. Conductor vehículo de transporte público
+6. Conductor motociclista
+7. Conductor Patineta
+8. Conductor Ciclomotor
+9. Conductor Taxi-ciclomotor
+10. Conductor Carga pesada
+11. Ciclista
+12. Nadie (solo daños)
+
+### Referencia de Actores Viales en Reportes
+
+Para cada reporte, se desea tener referencias a los actores viales involucrados. Si una categoría requiere información sobre víctimas e involucrados, se realizan las preguntas correspondientes. Para habilitar estas preguntas en una categoría, se deben completar los campos "pregunta_victima" y "pregunta_involucrado" en la tabla de Árbol de Categorías.
+
+Una vez que se realice la pregunta, las respuestas se guardarán como referencias en los campos "victima" e "involucrados" de la tabla de reportes.
+
+Recuerda proporcionar el texto de la pregunta específicamente en los campos "pregunta
+
+
+
+
 
 ## Versatilidad del Chatbot
 
